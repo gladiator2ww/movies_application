@@ -7,4 +7,5 @@ class FontSizes {
   static const big_2x = 17.0;
   static const big_3x = 19.0;
   static const big_4x = 21.0;
+  static const big_5x = 25.0;
 }

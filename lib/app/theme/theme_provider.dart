@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'branding_colors.dart';
 import 'fontsize.dart';
-
 
 class ThemeProvider {
   static ThemeData getTheme() {
@@ -12,11 +10,8 @@ class ThemeProvider {
       appBarTheme: AppBarTheme(
         backgroundColor: BrandingColors.pageBackground,
         iconTheme: IconThemeData(color: BrandingColors.primary),
-        textTheme: TextTheme(
-          headline6: _TextStyles.headline6,
-          // button: _TextStyles.headline5,
-        ),
-        elevation: 0.0,
+        toolbarTextStyle: _TextStyles.headline6,
+        elevation: 0.5,
       ),
       textTheme: TextTheme(
         headline6: _TextStyles.headline6,
@@ -48,6 +43,11 @@ class _TextStyles {
     fontSize: FontSizes.big_3x,
     fontWeight: FontWeight.w700,
   );
+  static const headline4 = TextStyle(
+    color: BrandingColors.primaryText,
+    fontSize: FontSizes.big_5x,
+    fontWeight: FontWeight.w700,
+  );
   static const bodyText1 = TextStyle(
     color: BrandingColors.primaryText,
     fontSize: FontSizes.normal,
@@ -57,6 +57,11 @@ class _TextStyles {
     color: BrandingColors.secondaryText,
     fontSize: FontSizes.normal,
     fontWeight: FontWeight.w700,
+  );
+  static const bodyText3 = TextStyle(
+    color: BrandingColors.secondaryText,
+    fontSize: FontSizes.big_1x,
+    fontWeight: FontWeight.w600,
   );
 
   static const button = TextStyle(
@@ -78,12 +83,6 @@ class _TextStyles {
     fontWeight: FontWeight.w700,
   );
 
-  static const headline4 = TextStyle(
-    color: BrandingColors.primary,
-    fontSize: FontSizes.normal,
-    fontWeight: FontWeight.w700,
-  );
-
   static const caption = TextStyle(
     color: BrandingColors.secondary,
     fontSize: FontSizes.small_2x,
@@ -92,8 +91,8 @@ class _TextStyles {
 
   static const subtitle1 = TextStyle(
     color: BrandingColors.primaryText,
-    fontSize: FontSizes.normal,
-    fontWeight: FontWeight.w400,
+    fontSize: FontSizes.big_1x,
+    fontWeight: FontWeight.w600,
   );
 
   static const subtitle2 = TextStyle(

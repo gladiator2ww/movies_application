@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:movies_application/app/theme/branding_colors.dart';
 import 'movie_image.dart';
 
-class MovieModelCard extends StatelessWidget {
+class ActorMoviesCard extends StatelessWidget {
   final String itemImage;
-  final String itemRating;
+
   final String itemTitle;
   final String itemYear;
 
-  const MovieModelCard({
+  const ActorMoviesCard({
     Key? key,
     required this.itemImage,
-    required this.itemRating,
     required this.itemTitle,
     required this.itemYear,
   }) : super(key: key);
@@ -28,19 +27,6 @@ class MovieModelCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MovieImage(width: 140, height: 210, imageUrl: itemImage),
-          Row(
-            children: [
-              Icon(
-                Icons.star,
-                color: BrandingColors.iconStar,
-                size: 20,
-              ),
-              Text(
-                itemRating,
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
-            ],
-          ),
           Container(
             width: 130,
             padding: const EdgeInsets.only(left: 5),
@@ -51,7 +37,7 @@ class MovieModelCard extends StatelessWidget {
                   itemTitle,
                   style: Theme.of(context).textTheme.bodyText1,
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
+                  maxLines: 2,
                 ),
                 Text(
                   itemYear,

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_application/app/models/filter_model.dart';
-import 'package:movies_application/app/models/grid_navigation_data.dart';
+import 'package:movies_application/data/grid_navigation_data.dart';
 import 'package:movies_application/app/models/movie_model.dart';
 import 'package:movies_application/app/models/sorting.dart';
 import 'package:movies_application/app/services/dialog_service.dart';

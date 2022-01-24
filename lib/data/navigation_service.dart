@@ -1,20 +1,21 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movies_application/app/models/grid_navigation_data.dart';
-import 'package:movies_application/app/pages/homepage.dart';
-import 'package:movies_application/app/pages/movie_view.dart';
+import 'package:movies_application/app/pages/actor_details.dart';
+import 'package:movies_application/data/grid_navigation_data.dart';
+import 'package:movies_application/app/pages/home.dart';
+import 'package:movies_application/app/pages/movie_details.dart';
 import 'package:movies_application/app/pages/movies_grid_view.dart';
-import 'package:movies_application/app/pages/search_page.dart';
-import 'package:movies_application/app/pages/user_page.dart';
+import 'package:movies_application/app/pages/search.dart';
+import 'package:movies_application/app/pages/user.dart';
+
 enum Pages {
   home,
   search,
   saved,
   userPage,
   moviesGridView,
-  movieView,
-  actorPage,
+  movieDetails,
+  actorDetails,
 }
 
 class NavigationService {
@@ -50,7 +51,7 @@ class NavigationService {
 
     switch (page) {
       case Pages.home:
-        resultPage = HomePage();
+        resultPage = Home();
         break;
       case Pages.search:
         resultPage = SearchPage();
@@ -64,16 +65,21 @@ class NavigationService {
           gridNavigationData: gridNavigationData,
         );
         break;
-      case Pages.movieView:
+      case Pages.movieDetails:
         final movieId = arguments as String;
-        resultPage = MovieView(
+        resultPage = MovieDetails(
           movieId: movieId,
-          // rating: movie.imDbRating ?? ''
+        );
+        break;
+        case Pages.actorDetails:
+        final movieId = arguments as String;
+        resultPage = ActorDetails(
+          movieId: movieId,
         );
         break;
 
       default:
-        resultPage = HomePage();
+        resultPage = Home();
         break;
     }
 

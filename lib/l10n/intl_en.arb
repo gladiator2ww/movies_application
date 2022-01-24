@@ -26,5 +26,9 @@
     "rank_8_up": "rating 8+",
     "rank_9_up": "rating 9+",
     "connection_service": "Connection to the server, please wait",
-    "movies_2022_year" : "year 2022+"
+    "movies_2022_year" : "year 2022+",
+    "cast" : "Cast",
+    "similars_movies" : "Similars Movies",
+    "add_to_saved" : "Add to saved",
+    "filmography": "Filmography"
     }

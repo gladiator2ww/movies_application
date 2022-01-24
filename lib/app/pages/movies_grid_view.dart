@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_application/app/bloc/movies_grid_view_bloc.dart';
-import 'package:movies_application/app/models/grid_navigation_data.dart';
+import 'package:movies_application/data/grid_navigation_data.dart';
 import 'package:movies_application/app/widgets/bottom_bar.dart';
 import 'package:movies_application/app/widgets/buttons/filter_button.dart';
 import 'package:movies_application/app/widgets/movie_grid_card.dart';

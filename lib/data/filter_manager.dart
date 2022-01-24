@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:movies_application/app/models/filter_model.dart';
 import 'package:movies_application/app/models/movie_model.dart';
 import 'package:movies_application/app/models/sorting.dart';
-
 
 class FilterManager {
   static List<MovieModel> getFilteredMovies({

@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_application/app/bloc/movie_model_home_bloc.dart';
-import 'package:movies_application/app/models/grid_navigation_data.dart';
+import 'package:movies_application/data/grid_navigation_data.dart';
 import 'package:movies_application/app/widgets/bottom_bar.dart';
 import 'package:movies_application/app/widgets/coming_soon_movies.dart';
 import 'package:movies_application/app/widgets/movies_section.dart';
@@ -10,12 +10,12 @@ import 'package:movies_application/app/widgets/my_circular_progress_indicator.da
 import 'package:movies_application/data/movies_repository.dart';
 import 'package:movies_application/generated/l10n.dart';
 
-class HomePage extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeState createState() => _HomeState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeState extends State<Home> {
   final MoviesRepository _moviesRepository = MoviesRepository();
 
   void initState() {
@@ -56,18 +56,16 @@ class _HomePageState extends State<HomePage> {
                             enlargeCenterPage: false,
                             scrollDirection: Axis.horizontal,
                           ),
-                          itemBuilder:
-                              (context, int index, int pageViewIndex) =>
-                                  ComingSoonMovies(
-                                    itemImage:
-                                        '${state.comingSoonMovies[index].image}',
-                                    itemTitle:
-                                        '${state.comingSoonMovies[index].title}',
-                                    itemRuntimeStr:
-                                        '${state.comingSoonMovies[index].runtimeStr}',
-                                    itemRealiseState:
-                                        '${state.comingSoonMovies[index].releaseState}',
-                                  )),
+                          itemBuilder: (context, int index,
+                                  int pageViewIndex) =>
+                              ComingSoonMovies(
+                                itemImage: state.comingSoonMovies[index].image,
+                                itemTitle: state.comingSoonMovies[index].title,
+                                itemRuntimeStr:
+                                    state.comingSoonMovies[index].runtimeStr,
+                                itemRealiseState:
+                                    state.comingSoonMovies[index].releaseState,
+                              ),),
                       MoviesSection(
                           typeState: state.popularMovies,
                           name: S.of(context).most_popular_movies,
@@ -83,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                           },
                           onTapMovieView: (movieId) {
                             bloc.add(
-                              OnTapMovieViewEvent(movieIdEvent: movieId),
+                              OnTapMovieDetailsEvent(movieIdEvent: movieId),
                             );
                           }),
                       MoviesSection(
@@ -101,28 +99,27 @@ class _HomePageState extends State<HomePage> {
                           },
                           onTapMovieView: (movieId) {
                             bloc.add(
-                              OnTapMovieViewEvent(movieIdEvent: movieId),
+                              OnTapMovieDetailsEvent(movieIdEvent: movieId),
                             );
                           }),
                       MoviesSection(
-                        typeState: state.top250Movies,
-                        name: S.of(context).top_movies250,
-                        onTapSeeAll: () {
-                          bloc.add(
-                            OnTapSeeAllEvent(
-                              gridNavigationDataEvent: GridNavigationData(
-                                titleCategory: MoviesCategory.top250Movies,
-                                name: S.of(context).top_movies250,
-                              ),
-                            ),
-                          );
-                        },
-                        onTapMovieView: (movieId) {
+                          typeState: state.top250Movies,
+                          name: S.of(context).top_movies250,
+                          onTapSeeAll: () {
                             bloc.add(
-                              OnTapMovieViewEvent(movieIdEvent: movieId),
+                              OnTapSeeAllEvent(
+                                gridNavigationDataEvent: GridNavigationData(
+                                  titleCategory: MoviesCategory.top250Movies,
+                                  name: S.of(context).top_movies250,
+                                ),
+                              ),
+                            );
+                          },
+                          onTapMovieView: (movieId) {
+                            bloc.add(
+                              OnTapMovieDetailsEvent(movieIdEvent: movieId),
                             );
                           }),
-                      
                     ],
                   ),
                 ),

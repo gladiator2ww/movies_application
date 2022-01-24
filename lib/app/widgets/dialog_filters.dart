@@ -3,7 +3,6 @@ import 'package:movies_application/app/models/filter_model.dart';
 import 'package:movies_application/app/models/sorting.dart';
 import 'package:movies_application/app/theme/branding_colors.dart';
 import 'package:movies_application/generated/l10n.dart';
-
 import 'buttons/cancel_button.dart';
 import 'buttons/done_button.dart';
 import 'dialog_filters_stucture.dart';

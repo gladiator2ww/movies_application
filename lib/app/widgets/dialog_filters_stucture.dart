@@ -47,7 +47,6 @@ class _DialogFiltersStructureState extends State<DialogFiltersStructure> {
           SizedBox(
             height: 290,
             child: ListView.builder(
-                // shrinkWrap: true,
                 itemCount: widget.typeListSorting.length,
                 itemBuilder: (context, index) {
                   final item = widget.typeListSorting[index];

@@ -329,6 +329,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Cast`
+  String get cast {
+    return Intl.message(
+      'Cast',
+      name: 'cast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Similars Movies`
+  String get similars_movies {
+    return Intl.message(
+      'Similars Movies',
+      name: 'similars_movies',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add to saved`
+  String get add_to_saved {
+    return Intl.message(
+      'Add to saved',
+      name: 'add_to_saved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filmography`
+  String get filmography {
+    return Intl.message(
+      'Filmography',
+      name: 'filmography',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

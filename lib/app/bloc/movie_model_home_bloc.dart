@@ -1,4 +1,4 @@
-import 'package:movies_application/app/models/grid_navigation_data.dart';
+import 'package:movies_application/data/grid_navigation_data.dart';
 import 'package:movies_application/app/models/movie_model.dart';
 import 'package:movies_application/app/models/movie_model_coming_soon.dart';
 import 'package:movies_application/data/dependency_service.dart';
@@ -42,9 +42,9 @@ class MovieModelBloc extends Bloc<MovieModelEvent, MovieModelState> {
     } else if (event is OnTapSeeAllEvent) {
       navigationService.navigateTo(
           page: Pages.moviesGridView, arguments: event.gridNavigationDataEvent);
-    } else if (event is OnTapMovieViewEvent) {
-      navigationService.navigateWithReplacementTo(
-           Pages.movieView, arguments: event.movieIdEvent);
+    } else if (event is OnTapMovieDetailsEvent) {
+      navigationService.navigateTo(
+          page: Pages.movieDetails, arguments: event.movieIdEvent);
     }
   }
 }
@@ -64,9 +64,9 @@ class OnTapSeeAllEvent extends MovieModelEvent {
   });
 }
 
-class OnTapMovieViewEvent extends MovieModelEvent {
+class OnTapMovieDetailsEvent extends MovieModelEvent {
   final String movieIdEvent;
-  OnTapMovieViewEvent({
+  OnTapMovieDetailsEvent({
     required this.movieIdEvent,
   });
 }

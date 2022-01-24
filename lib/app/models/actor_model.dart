@@ -1,19 +1,18 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-part 'movie_model.freezed.dart';
-part 'movie_model.g.dart';
+part 'actor_model.freezed.dart';
+part 'actor_model.g.dart';
 
 @freezed
-class MovieModel with _$MovieModel {
-  factory MovieModel({
+class ActorModel with _$ActorModel {
+  factory ActorModel({
     required String id,
-    required String title,
+    required String name,
     required String image,
-    required String imDbRating,
-    required String year,
-  }) = _MovieModel;
+    required String asCharacter,
+  }) = _ActorModel;
 
-  factory MovieModel.fromJson(Map<String, dynamic> data) =>
-      _$MovieModelFromJson(data);
+  factory ActorModel.fromJson(Map<String, dynamic> data) =>
+      _$ActorModelFromJson(data);
 }
 
 

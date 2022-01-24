@@ -22,13 +22,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add_to_saved": MessageLookupByLibrary.simpleMessage("Add to saved"),
         "by_filter": MessageLookupByLibrary.simpleMessage("BY FILTER"),
         "by_sort": MessageLookupByLibrary.simpleMessage("BY SORT"),
         "cancel": MessageLookupByLibrary.simpleMessage("CANCEL"),
+        "cast": MessageLookupByLibrary.simpleMessage("Cast"),
         "coming_soon": MessageLookupByLibrary.simpleMessage("Coming Soon"),
         "connection_service": MessageLookupByLibrary.simpleMessage(
             "Connection to the server, please wait"),
         "done": MessageLookupByLibrary.simpleMessage("DONE"),
+        "filmography": MessageLookupByLibrary.simpleMessage("Filmography"),
         "filters": MessageLookupByLibrary.simpleMessage("Filters"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "most_popular_movies":
@@ -52,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "saved": MessageLookupByLibrary.simpleMessage("Saved"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "see_all": MessageLookupByLibrary.simpleMessage("SEE ALL"),
+        "similars_movies":
+            MessageLookupByLibrary.simpleMessage("Similars Movies"),
         "top_movies250": MessageLookupByLibrary.simpleMessage("Top 250 Movies"),
         "top_tvs250": MessageLookupByLibrary.simpleMessage("Top 250 TVs"),
         "year_late_to_new":

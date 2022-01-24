@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:movies_application/app/models/actor_model.dart';
+import 'package:movies_application/app/models/movie_details_model.dart';
 import 'package:movies_application/app/models/movie_model.dart';
+import 'package:movies_application/app/models/actor_movies_model.dart';
 import 'package:movies_application/app/models/movie_model_coming_soon.dart';
-import 'package:movies_application/app/models/movie_view_model.dart';
 import 'package:movies_application/app/models/short_image.dart';
 import 'package:movies_application/shared/apikey.dart';
-
+import 'package:movies_application/app/models/actor_details_model.dart';
 
 class MoviesProvider {
   Future<List<MovieModel>> fetchPopularMovies() async {
@@ -41,16 +43,48 @@ class MoviesProvider {
   Future<List<ShortImageModel>> fetchMovieShortImage(String movieId) async {
     final data = await http.get(Uri.parse(
         'https://imdb-api.com/en/API/Images/${apiKey}/${movieId}/Short'));
+
     final itemShortImage =
         ShortImageItems.fromJson(jsonDecode(data.body)).shortImageItems;
     return itemShortImage;
   }
 
-  Future<List<MovieViewModel>> fetchMovieView(String movieId) async {
+  Future<MovieDetailsModel> fetchMovieView(String movieId) async {
     final data = await http.get(
         Uri.parse('https://imdb-api.com/en/API/Title/${apiKey}/${movieId}'));
-    final itemMovie = MovieItems.fromJson(jsonDecode(data.body)).movieItems;
-    return itemMovie;
+    final itemMovieDetails = MovieDetailsModel.fromJson(jsonDecode(data.body));
+    return itemMovieDetails;
+  }
+
+  Future<List<ActorModel>> fetchMovieDetailsActor(String movieId) async {
+    final data = await http.get(
+        Uri.parse('https://imdb-api.com/en/API/Title/${apiKey}/${movieId}'));
+    final itemsActor = ActorItems.fromJson(jsonDecode(data.body)).actorItems;
+    return itemsActor;
+  }
+
+  Future<List<MovieModel>> fetchSimilarsMovies(String movieId) async {
+    final data = await http.get(
+        Uri.parse('https://imdb-api.com/en/API/Title/${apiKey}/${movieId}'));
+    final itemSimilar =
+        SimilarsItems.fromJson(jsonDecode(data.body)).similarsItems;
+    return itemSimilar;
+  }
+
+  Future<ActorDetailsModel> fetchActorDetails(String movieId) async {
+    final data = await http.get(
+        Uri.parse('https://imdb-api.com/en/API/Name/${apiKey}/${movieId}'));
+    final itemActor = ActorDetailsModel.fromJson(jsonDecode(data.body));
+    return itemActor;
+  }
+
+  Future<List<ActorMoviesModel>> fetchActorMovies(String movieId) async {
+    final data = await http.get(
+        Uri.parse('https://imdb-api.com/en/API/Name/${apiKey}/${movieId}'));
+    print('good');
+    final itemActorMovie =
+        ActorMoviesItems.fromJson(jsonDecode(data.body)).actorMoviesItems;
+    return itemActorMovie;
   }
 }
 
@@ -119,16 +153,45 @@ class ShortImageItems {
   }
 }
 
-class MovieItems {
-  final List<MovieViewModel> movieItems;
-  MovieItems({
-    required this.movieItems,
+
+
+class ActorItems {
+  final List<ActorModel> actorItems;
+
+  ActorItems({required this.actorItems});
+
+  factory ActorItems.fromJson(Map<String, dynamic> json) {
+    return ActorItems(
+        actorItems: (json['actorList'] as List)
+            .map((json) => ActorModel.fromJson(json))
+            .toList());
+  }
+}
+
+class SimilarsItems {
+  final List<MovieModel> similarsItems;
+
+  SimilarsItems({required this.similarsItems});
+
+  factory SimilarsItems.fromJson(Map<String, dynamic> json) {
+    return SimilarsItems(
+        similarsItems: (json['similars'] as List)
+            .map((json) => MovieModel.fromJson(json))
+            .toList());
+  }
+}
+
+class ActorMoviesItems {
+  final List<ActorMoviesModel> actorMoviesItems;
+
+  ActorMoviesItems({
+    required this.actorMoviesItems,
   });
 
-  factory MovieItems.fromJson(Map<String, dynamic> json) {
-    return MovieItems(
-        movieItems: (json['imDbId'] as List)
-            .map((json) => MovieViewModel.fromJson(json))
+  factory ActorMoviesItems.fromJson(Map<String, dynamic> json) {
+    return ActorMoviesItems(
+        actorMoviesItems: (json['knownFor'] as List)
+            .map((json) => ActorMoviesModel.fromJson(json))
             .toList());
   }
 }

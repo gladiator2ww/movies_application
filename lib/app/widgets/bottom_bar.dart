@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movies_application/app/pages/homepage.dart';
-import 'package:movies_application/app/pages/saved_page.dart';
-import 'package:movies_application/app/pages/search_page.dart';
-import 'package:movies_application/app/pages/user_page.dart';
+import 'package:movies_application/app/pages/home.dart';
+import 'package:movies_application/app/pages/saved.dart';
+import 'package:movies_application/app/pages/search.dart';
+import 'package:movies_application/app/pages/user.dart';
 import 'package:movies_application/app/theme/branding_colors.dart';
 import 'package:movies_application/generated/l10n.dart';
 
@@ -17,7 +17,7 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     var _indexPage = 0;
     final List _page = [
-      HomePage(),
+      Home(),
       SearchPage(),
       SavedPage(),
       UserPage(),
