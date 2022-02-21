@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:movies_application/app/theme/theme_provider.dart';
-import 'app/pages/home.dart';
+import 'app/pages/shell.dart';
 import 'data/dependency_service.dart';
 import 'data/navigation_service.dart';
 import 'generated/l10n.dart';
-
 import 'package:get/get.dart';
+
 void main() {
   // DependencyService.registerServices();
   getIt.registerSingleton<NavigationService>(NavigationService(),
@@ -46,7 +46,7 @@ class _MyFirstAppState extends State<MyFirstApp> {
       supportedLocales: S.delegate.supportedLocales,
       navigatorKey: Get.key,
       theme: ThemeProvider.getTheme(),
-      home: Home(),
+      home: Shell(),
     );
   }
 }

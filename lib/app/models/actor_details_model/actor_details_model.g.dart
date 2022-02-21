@@ -16,6 +16,9 @@ _$_ActorDetailsModel _$$_ActorDetailsModelFromJson(Map<String, dynamic> json) =>
       height: json['height'] as String,
       birthDate: json['birthDate'] as String,
       awards: json['awards'] as String,
+      actorMovies: (json['actorMovies'] as List<dynamic>)
+          .map((e) => ActorFilmographyModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_ActorDetailsModelToJson(
@@ -29,4 +32,5 @@ Map<String, dynamic> _$$_ActorDetailsModelToJson(
       'height': instance.height,
       'birthDate': instance.birthDate,
       'awards': instance.awards,
+      'actorMovies': instance.actorMovies,
     };

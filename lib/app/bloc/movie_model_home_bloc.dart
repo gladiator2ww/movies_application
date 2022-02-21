@@ -1,6 +1,6 @@
+import 'package:movies_application/app/models/movie_model/movie_model.dart';
+import 'package:movies_application/app/models/movie_model_coming_soon/movie_model_coming_soon.dart';
 import 'package:movies_application/data/grid_navigation_data.dart';
-import 'package:movies_application/app/models/movie_model.dart';
-import 'package:movies_application/app/models/movie_model_coming_soon.dart';
 import 'package:movies_application/data/dependency_service.dart';
 import 'package:movies_application/data/movies_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +8,10 @@ import 'package:movies_application/data/navigation_service.dart';
 
 class MovieModelBloc extends Bloc<MovieModelEvent, MovieModelState> {
   final MoviesRepository _moviesRepository;
+  var _comingSoonMoviesList = <MovieModelComingSoon>[];
+  var _popularMoviesList = <MovieModel>[];
+  var _popularTvsList = <MovieModel>[];
+  var _top250MoviesList = <MovieModel>[];
 
   MovieModelBloc(
     this._moviesRepository,
@@ -21,14 +25,10 @@ class MovieModelBloc extends Bloc<MovieModelEvent, MovieModelState> {
       yield MovieModelLoadingState();
 
       try {
-        final List<MovieModelComingSoon> _comingSoonMoviesList =
-            await _moviesRepository.getComingSoonMovies();
-        final List<MovieModel> _popularMoviesList =
-            await _moviesRepository.getPopularMovies();
-        final List<MovieModel> _popularTvsList =
-            await _moviesRepository.getPopularTvs();
-        final List<MovieModel> _top250MoviesList =
-            await _moviesRepository.getTop250Movies();
+        _comingSoonMoviesList = await _moviesRepository.getComingSoonMovies();
+        _popularMoviesList = await _moviesRepository.getPopularMovies();
+        _popularTvsList = await _moviesRepository.getPopularTvs();
+        _top250MoviesList = await _moviesRepository.getTop250Movies();
 
         yield MovieModelLoadedState(
           comingSoonMovies: _comingSoonMoviesList,
@@ -41,10 +41,10 @@ class MovieModelBloc extends Bloc<MovieModelEvent, MovieModelState> {
       }
     } else if (event is OnTapSeeAllEvent) {
       navigationService.navigateTo(
-          page: Pages.moviesGridView, arguments: event.gridNavigationDataEvent);
+          page: Page.moviesGridView, arguments: event.gridNavigationDataEvent);
     } else if (event is OnTapMovieDetailsEvent) {
       navigationService.navigateTo(
-          page: Pages.movieDetails, arguments: event.movieIdEvent);
+          page: Page.movieDetails, arguments: event.movieIdEvent);
     }
   }
 }

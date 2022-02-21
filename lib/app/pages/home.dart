@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_application/app/bloc/movie_model_home_bloc.dart';
 import 'package:movies_application/data/grid_navigation_data.dart';
-import 'package:movies_application/app/widgets/bottom_bar.dart';
 import 'package:movies_application/app/widgets/coming_soon_movies.dart';
 import 'package:movies_application/app/widgets/movies_section.dart';
 import 'package:movies_application/app/widgets/my_circular_progress_indicator.dart';
@@ -45,27 +44,27 @@ class _HomeState extends State<Home> {
                         style: Theme.of(context).textTheme.headline6,
                       ),
                       CarouselSlider.builder(
-                          itemCount: state.comingSoonMovies.length,
-                          options: CarouselOptions(
-                            height: 430,
-                            viewportFraction: 0.7,
-                            enableInfiniteScroll: true,
-                            autoPlay: true,
-                            autoPlayInterval: Duration(seconds: 55),
-                            autoPlayCurve: Curves.fastOutSlowIn,
-                            enlargeCenterPage: false,
-                            scrollDirection: Axis.horizontal,
-                          ),
-                          itemBuilder: (context, int index,
-                                  int pageViewIndex) =>
-                              ComingSoonMovies(
-                                itemImage: state.comingSoonMovies[index].image,
-                                itemTitle: state.comingSoonMovies[index].title,
-                                itemRuntimeStr:
-                                    state.comingSoonMovies[index].runtimeStr,
-                                itemRealiseState:
-                                    state.comingSoonMovies[index].releaseState,
-                              ),),
+                        itemCount: state.comingSoonMovies.length,
+                        options: CarouselOptions(
+                          height: 430,
+                          viewportFraction: 0.7,
+                          enableInfiniteScroll: true,
+                          autoPlay: true,
+                          autoPlayInterval: Duration(seconds: 55),
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enlargeCenterPage: false,
+                          scrollDirection: Axis.horizontal,
+                        ),
+                        itemBuilder: (context, int index, int pageViewIndex) =>
+                            ComingSoonMovies(
+                          itemImage: state.comingSoonMovies[index].image,
+                          itemTitle: state.comingSoonMovies[index].title,
+                          itemRuntimeStr:
+                              state.comingSoonMovies[index].runtimeStr,
+                          itemRealiseState:
+                              state.comingSoonMovies[index].releaseState,
+                        ),
+                      ),
                       MoviesSection(
                           typeState: state.popularMovies,
                           name: S.of(context).most_popular_movies,
@@ -124,13 +123,12 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-              bottomNavigationBar: BottomBar(),
             );
           }
           if (state is MovieModelEmptyState) {
             return Center(child: Text('No films'));
           }
-          return Text('Exeption');
+          return SizedBox();
         },
       ),
       // ),

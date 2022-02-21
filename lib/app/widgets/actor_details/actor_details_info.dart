@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:movies_application/app/widgets/genres_items.dart';
-
-class ActorDetailInfo extends StatelessWidget {
+class ActorDetailsInfo extends StatelessWidget {
   final String urlMovieImage;
 
   final String birthDate;
@@ -10,7 +8,7 @@ class ActorDetailInfo extends StatelessWidget {
   final String summary;
   final String awards;
 
-  ActorDetailInfo({
+  ActorDetailsInfo({
     Key? key,
     required this.urlMovieImage,
     required this.birthDate,

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'actor_movies_model.dart';
+part of 'search_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,71 +14,70 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ActorMoviesModel _$ActorMoviesModelFromJson(Map<String, dynamic> json) {
-  return _ActorMoviesModel.fromJson(json);
+SearchModel _$SearchModelFromJson(Map<String, dynamic> json) {
+  return _SearchModel.fromJson(json);
 }
 
 /// @nodoc
-class _$ActorMoviesModelTearOff {
-  const _$ActorMoviesModelTearOff();
+class _$SearchModelTearOff {
+  const _$SearchModelTearOff();
 
-  _ActorMoviesModel call(
+  _SearchModel call(
       {required String id,
       required String title,
       required String image,
-      required String year}) {
-    return _ActorMoviesModel(
+      required String description}) {
+    return _SearchModel(
       id: id,
       title: title,
       image: image,
-      year: year,
+      description: description,
     );
   }
 
-  ActorMoviesModel fromJson(Map<String, Object?> json) {
-    return ActorMoviesModel.fromJson(json);
+  SearchModel fromJson(Map<String, Object?> json) {
+    return SearchModel.fromJson(json);
   }
 }
 
 /// @nodoc
-const $ActorMoviesModel = _$ActorMoviesModelTearOff();
+const $SearchModel = _$SearchModelTearOff();
 
 /// @nodoc
-mixin _$ActorMoviesModel {
+mixin _$SearchModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
-  String get year => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ActorMoviesModelCopyWith<ActorMoviesModel> get copyWith =>
+  $SearchModelCopyWith<SearchModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ActorMoviesModelCopyWith<$Res> {
-  factory $ActorMoviesModelCopyWith(
-          ActorMoviesModel value, $Res Function(ActorMoviesModel) then) =
-      _$ActorMoviesModelCopyWithImpl<$Res>;
-  $Res call({String id, String title, String image, String year});
+abstract class $SearchModelCopyWith<$Res> {
+  factory $SearchModelCopyWith(
+          SearchModel value, $Res Function(SearchModel) then) =
+      _$SearchModelCopyWithImpl<$Res>;
+  $Res call({String id, String title, String image, String description});
 }
 
 /// @nodoc
-class _$ActorMoviesModelCopyWithImpl<$Res>
-    implements $ActorMoviesModelCopyWith<$Res> {
-  _$ActorMoviesModelCopyWithImpl(this._value, this._then);
+class _$SearchModelCopyWithImpl<$Res> implements $SearchModelCopyWith<$Res> {
+  _$SearchModelCopyWithImpl(this._value, this._then);
 
-  final ActorMoviesModel _value;
+  final SearchModel _value;
   // ignore: unused_field
-  final $Res Function(ActorMoviesModel) _then;
+  final $Res Function(SearchModel) _then;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
     Object? image = freezed,
-    Object? year = freezed,
+    Object? description = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -93,43 +92,42 @@ class _$ActorMoviesModelCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      year: year == freezed
-          ? _value.year
-          : year // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$ActorMoviesModelCopyWith<$Res>
-    implements $ActorMoviesModelCopyWith<$Res> {
-  factory _$ActorMoviesModelCopyWith(
-          _ActorMoviesModel value, $Res Function(_ActorMoviesModel) then) =
-      __$ActorMoviesModelCopyWithImpl<$Res>;
+abstract class _$SearchModelCopyWith<$Res>
+    implements $SearchModelCopyWith<$Res> {
+  factory _$SearchModelCopyWith(
+          _SearchModel value, $Res Function(_SearchModel) then) =
+      __$SearchModelCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String title, String image, String year});
+  $Res call({String id, String title, String image, String description});
 }
 
 /// @nodoc
-class __$ActorMoviesModelCopyWithImpl<$Res>
-    extends _$ActorMoviesModelCopyWithImpl<$Res>
-    implements _$ActorMoviesModelCopyWith<$Res> {
-  __$ActorMoviesModelCopyWithImpl(
-      _ActorMoviesModel _value, $Res Function(_ActorMoviesModel) _then)
-      : super(_value, (v) => _then(v as _ActorMoviesModel));
+class __$SearchModelCopyWithImpl<$Res> extends _$SearchModelCopyWithImpl<$Res>
+    implements _$SearchModelCopyWith<$Res> {
+  __$SearchModelCopyWithImpl(
+      _SearchModel _value, $Res Function(_SearchModel) _then)
+      : super(_value, (v) => _then(v as _SearchModel));
 
   @override
-  _ActorMoviesModel get _value => super._value as _ActorMoviesModel;
+  _SearchModel get _value => super._value as _SearchModel;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
     Object? image = freezed,
-    Object? year = freezed,
+    Object? description = freezed,
   }) {
-    return _then(_ActorMoviesModel(
+    return _then(_SearchModel(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -142,9 +140,9 @@ class __$ActorMoviesModelCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      year: year == freezed
-          ? _value.year
-          : year // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -152,15 +150,15 @@ class __$ActorMoviesModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ActorMoviesModel implements _ActorMoviesModel {
-  _$_ActorMoviesModel(
+class _$_SearchModel implements _SearchModel {
+  _$_SearchModel(
       {required this.id,
       required this.title,
       required this.image,
-      required this.year});
+      required this.description});
 
-  factory _$_ActorMoviesModel.fromJson(Map<String, dynamic> json) =>
-      _$$_ActorMoviesModelFromJson(json);
+  factory _$_SearchModel.fromJson(Map<String, dynamic> json) =>
+      _$$_SearchModelFromJson(json);
 
   @override
   final String id;
@@ -169,22 +167,23 @@ class _$_ActorMoviesModel implements _ActorMoviesModel {
   @override
   final String image;
   @override
-  final String year;
+  final String description;
 
   @override
   String toString() {
-    return 'ActorMoviesModel(id: $id, title: $title, image: $image, year: $year)';
+    return 'SearchModel(id: $id, title: $title, image: $image, description: $description)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ActorMoviesModel &&
+            other is _SearchModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.image, image) &&
-            const DeepCollectionEquality().equals(other.year, year));
+            const DeepCollectionEquality()
+                .equals(other.description, description));
   }
 
   @override
@@ -193,28 +192,28 @@ class _$_ActorMoviesModel implements _ActorMoviesModel {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(image),
-      const DeepCollectionEquality().hash(year));
+      const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)
   @override
-  _$ActorMoviesModelCopyWith<_ActorMoviesModel> get copyWith =>
-      __$ActorMoviesModelCopyWithImpl<_ActorMoviesModel>(this, _$identity);
+  _$SearchModelCopyWith<_SearchModel> get copyWith =>
+      __$SearchModelCopyWithImpl<_SearchModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ActorMoviesModelToJson(this);
+    return _$$_SearchModelToJson(this);
   }
 }
 
-abstract class _ActorMoviesModel implements ActorMoviesModel {
-  factory _ActorMoviesModel(
+abstract class _SearchModel implements SearchModel {
+  factory _SearchModel(
       {required String id,
       required String title,
       required String image,
-      required String year}) = _$_ActorMoviesModel;
+      required String description}) = _$_SearchModel;
 
-  factory _ActorMoviesModel.fromJson(Map<String, dynamic> json) =
-      _$_ActorMoviesModel.fromJson;
+  factory _SearchModel.fromJson(Map<String, dynamic> json) =
+      _$_SearchModel.fromJson;
 
   @override
   String get id;
@@ -223,9 +222,9 @@ abstract class _ActorMoviesModel implements ActorMoviesModel {
   @override
   String get image;
   @override
-  String get year;
+  String get description;
   @override
   @JsonKey(ignore: true)
-  _$ActorMoviesModelCopyWith<_ActorMoviesModel> get copyWith =>
+  _$SearchModelCopyWith<_SearchModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

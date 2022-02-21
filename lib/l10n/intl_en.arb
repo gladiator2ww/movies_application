@@ -30,5 +30,11 @@
     "cast" : "Cast",
     "similars_movies" : "Similars Movies",
     "add_to_saved" : "Add to saved",
-    "filmography": "Filmography"
+    "filmography": "Filmography",
+    "top_box_office": "Top Box Office",
+    "title": "title",
+    "weekend": "weekend",
+    "gross": "gross",
+    "weeks": "weeks",
+    "search_movie": "Search movie..."
     }

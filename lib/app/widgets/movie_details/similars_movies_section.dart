@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-
-import 'package:movies_application/app/models/actor_model.dart';
+import 'package:movies_application/app/models/movie_model/movie_model.dart';
 import 'package:movies_application/generated/l10n.dart';
+import 'similar_movie_card.dart';
 
-import 'actor_card.dart';
+class SimilarsMoviesSection extends StatelessWidget {
+  final List<MovieModel> typeState;
 
-class ActorSection extends StatelessWidget {
-  final List<ActorModel> typeState;
+  final void Function(String) onTapMovieDetailsEvent;
 
-  final void Function(String) onTapActorDetails;
-
-  const ActorSection({
+  const SimilarsMoviesSection({
     Key? key,
     required this.typeState,
-    required this.onTapActorDetails,
+    required this.onTapMovieDetailsEvent,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -21,13 +19,13 @@ class ActorSection extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 20),
       elevation: 5,
       child: Container(
-        height: 330,
+        height: 340,
         padding: EdgeInsets.only(top: 20, left: 10, bottom: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              S.of(context).cast,
+              S.of(context).similars_movies,
               style: Theme.of(context).textTheme.headline6,
             ),
             SizedBox(height: 5),
@@ -39,11 +37,11 @@ class ActorSection extends StatelessWidget {
                   final item = typeState[index];
 
                   return GestureDetector(
-                    onTap: () => onTapActorDetails(item.id),
-                    child: ActorCard(
+                    onTap: () => onTapMovieDetailsEvent(item.id),
+                    child: SimilarMovieCard(
                       itemImage: item.image,
-                      itemName: item.name,
-                      asCharacter: item.asCharacter,
+                      itemTitle: item.title,
+                      itemRating: item.imDbRating,
                     ),
                   );
                 },

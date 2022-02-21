@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_application/app/models/movie_model.dart';
+import 'package:movies_application/app/models/movie_model/movie_model.dart';
 import 'buttons/see_all_button.dart';
 import 'movie_model_card.dart';
 
@@ -43,10 +43,10 @@ class MoviesSection extends StatelessWidget {
                 return GestureDetector(
                   onTap: () => onTapMovieView(item.id),
                   child: MovieModelCard(
-                    itemImage: '${item.image}',
-                    itemRating: '${item.imDbRating}',
-                    itemTitle: '${item.title}',
-                    itemYear: '${item.year}',
+                    itemImage: item.image,
+                    itemRating: item.imDbRating,
+                    itemTitle: item.title,
+                    itemYear: item.year,
                   ),
                 );
               },

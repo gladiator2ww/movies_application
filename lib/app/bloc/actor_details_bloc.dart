@@ -1,9 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_application/app/models/actor_movies_model.dart';
+import 'package:movies_application/app/models/short_image/short_image.dart';
 import 'package:movies_application/data/dependency_service.dart';
 import 'package:movies_application/data/movies_repository.dart';
 import 'package:movies_application/data/navigation_service.dart';
-import 'package:movies_application/app/models/actor_details_model.dart';
+import 'package:movies_application/app/models/actor_details_model/actor_details_model.dart';
+
 
 class ActorDetailsBloc extends Bloc<ActorDetailsEvent, ActorDetailsState> {
   final MoviesRepository _moviesRepository;
@@ -13,8 +14,7 @@ class ActorDetailsBloc extends Bloc<ActorDetailsEvent, ActorDetailsState> {
   ) : super(ActorDetailsEmptyState());
 
   late ActorDetailsModel _actor;
-
-  var _actorMovies = <ActorMoviesModel>[];
+  var _actorImages = <ShortImageModel>[];
 
   @override
   Stream<ActorDetailsState> mapEventToState(ActorDetailsEvent event) async* {
@@ -22,19 +22,19 @@ class ActorDetailsBloc extends Bloc<ActorDetailsEvent, ActorDetailsState> {
       yield ActorDetailsLoadingState();
 
       try {
+        _actorImages = await _moviesRepository.getShortImage(event.movieId);
         _actor = await _moviesRepository.getActorDetails(event.movieId);
-        _actorMovies = await _moviesRepository.getActorMovies(event.movieId);
 
         yield ActorDetailsLoadedState(
           actor: _actor,
-          actorMovies: _actorMovies,
+          actorImages: _actorImages,
         );
       } catch (_) {
         yield ActorDetailsEmptyState();
       }
     } else if (event is OnTapMovieDetailsEvent) {
       navigationService.navigateTo(
-          page: Pages.movieDetails, arguments: event.movieIdEvent);
+          page: Page.movieDetails, arguments: event.movieIdEvent);
     }
   }
 }
@@ -61,11 +61,11 @@ class ActorDetailsLoadingState extends ActorDetailsState {}
 
 class ActorDetailsLoadedState extends ActorDetailsState {
   ActorDetailsModel actor;
-  List<ActorMoviesModel> actorMovies;
+  List<ShortImageModel> actorImages;
 
   ActorDetailsLoadedState({
     required this.actor,
-    required this.actorMovies,
+    required this.actorImages,
   });
 }
 

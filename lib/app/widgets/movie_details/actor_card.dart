@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'movie_image.dart';
+import '../movie_image.dart';
 
 class ActorCard extends StatelessWidget {
   final String itemImage;

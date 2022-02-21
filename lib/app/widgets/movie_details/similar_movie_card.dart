@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:movies_application/app/theme/branding_colors.dart';
 
-import 'movie_image.dart';
+import '../movie_image.dart';
 
-class MovieSimilarCard extends StatelessWidget {
+class SimilarMovieCard extends StatelessWidget {
   final String itemImage;
   final String itemRating;
   final String itemTitle;
 
-  const MovieSimilarCard({
+  const SimilarMovieCard({
     Key? key,
     required this.itemImage,
     required this.itemRating,
@@ -44,12 +44,15 @@ class MovieSimilarCard extends StatelessWidget {
                 ),
               ],
             ),
-            Text(
-              itemTitle,
-              style: Theme.of(context).textTheme.bodyText1,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-              textAlign: TextAlign.start,
+            Padding(
+              padding: const EdgeInsets.only(left: 5),
+              child: Text(
+                itemTitle,
+                style: Theme.of(context).textTheme.bodyText1,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                textAlign: TextAlign.start,
+              ),
             ),
           ],
         ),

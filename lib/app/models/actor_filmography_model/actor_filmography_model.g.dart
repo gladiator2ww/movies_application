@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'actor_movies_model.dart';
+part of 'actor_filmography_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

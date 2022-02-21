@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-class UserPage extends StatelessWidget {
+class User extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      color: Colors.red,
+    );
   }
 }

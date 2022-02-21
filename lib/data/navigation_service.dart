@@ -8,11 +8,11 @@ import 'package:movies_application/app/pages/movies_grid_view.dart';
 import 'package:movies_application/app/pages/search.dart';
 import 'package:movies_application/app/pages/user.dart';
 
-enum Pages {
+enum Page {
   home,
   search,
   saved,
-  userPage,
+  user,
   moviesGridView,
   movieDetails,
   actorDetails,
@@ -21,20 +21,15 @@ enum Pages {
 class NavigationService {
   final GlobalKey<NavigatorState> navigatorKey = Get.key;
 
-  final Map<Pages, int> _shellPageToInt = {
-    Pages.home: 0,
-    Pages.search: 1,
-    Pages.saved: 2,
-    Pages.userPage: 3,
-  };
+  
 
   Future<dynamic>? navigateTo(
-      {required Pages page, required Object arguments}) {
+      {required Page page, required Object arguments}) {
     final route = _generateRoute(page, arguments);
     return route != null ? navigatorKey.currentState?.push(route) : null;
   }
 
-  Future<dynamic>? navigateWithReplacementTo(Pages page,
+  Future<dynamic>? navigateWithReplacementTo(Page page,
       {required Object arguments}) {
     final route = _generateRoute(page, arguments);
     return route != null
@@ -46,32 +41,32 @@ class NavigationService {
     navigatorKey.currentState?.pop();
   }
 
-  Route<dynamic>? _generateRoute(Pages page, Object arguments) {
+  Route<dynamic>? _generateRoute(Page page, Object arguments) {
     Widget resultPage;
 
     switch (page) {
-      case Pages.home:
+      case Page.home:
         resultPage = Home();
         break;
-      case Pages.search:
-        resultPage = SearchPage();
+      case Page.search:
+        resultPage = Search();
         break;
-      case Pages.userPage:
-        resultPage = UserPage();
+      case Page.user:
+        resultPage = User();
         break;
-      case Pages.moviesGridView:
+      case Page.moviesGridView:
         final gridNavigationData = arguments as GridNavigationData;
         resultPage = MoviesGridView(
           gridNavigationData: gridNavigationData,
         );
         break;
-      case Pages.movieDetails:
+      case Page.movieDetails:
         final movieId = arguments as String;
         resultPage = MovieDetails(
           movieId: movieId,
         );
         break;
-        case Pages.actorDetails:
+        case Page.actorDetails:
         final movieId = arguments as String;
         resultPage = ActorDetails(
           movieId: movieId,

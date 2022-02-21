@@ -38,7 +38,7 @@ class _TextStyles {
     fontSize: FontSizes.big_4x,
     fontWeight: FontWeight.w700,
   );
-  static const TextStyle headline5 = TextStyle(
+  static const headline5 = TextStyle(
     color: BrandingColors.primaryText,
     fontSize: FontSizes.big_3x,
     fontWeight: FontWeight.w700,
@@ -46,6 +46,11 @@ class _TextStyles {
   static const headline4 = TextStyle(
     color: BrandingColors.primaryText,
     fontSize: FontSizes.big_5x,
+    fontWeight: FontWeight.w700,
+  );
+  static const headline3 = TextStyle(
+    color: BrandingColors.secondaryText,
+    fontSize: FontSizes.big_3x,
     fontWeight: FontWeight.w700,
   );
   static const bodyText1 = TextStyle(
@@ -57,11 +62,6 @@ class _TextStyles {
     color: BrandingColors.secondaryText,
     fontSize: FontSizes.normal,
     fontWeight: FontWeight.w700,
-  );
-  static const bodyText3 = TextStyle(
-    color: BrandingColors.secondaryText,
-    fontSize: FontSizes.big_1x,
-    fontWeight: FontWeight.w600,
   );
 
   static const button = TextStyle(
@@ -105,11 +105,5 @@ class _TextStyles {
     color: BrandingColors.primaryText,
     fontSize: FontSizes.normal,
     fontWeight: FontWeight.w800,
-  );
-
-  static const headline3 = TextStyle(
-    color: BrandingColors.secondaryText,
-    fontSize: FontSizes.big_1x,
-    fontWeight: FontWeight.w300,
   );
 }

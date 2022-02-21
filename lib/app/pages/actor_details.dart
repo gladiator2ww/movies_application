@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movies_application/app/bloc/actor_details_bloc.dart';
-import 'package:movies_application/app/widgets/actor_detail_info.dart';
-import 'package:movies_application/app/widgets/actor_movies_section.dart';
-import 'package:movies_application/app/widgets/bottom_bar.dart';
+import 'package:movies_application/app/widgets/actor_details/actor_details_info.dart';
+import 'package:movies_application/app/widgets/actor_details/actor_filmography_section.dart';
+import 'package:movies_application/app/widgets/movie_details/movie_screen_image.dart';
 import 'package:movies_application/app/widgets/my_circular_progress_indicator.dart';
 import 'package:movies_application/data/movies_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class ActorDetails extends StatefulWidget {
   final String movieId;
@@ -56,6 +57,7 @@ class _ActorDetailsState extends State<ActorDetails> {
                         padding:
                             EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               state.actor.name,
@@ -69,15 +71,34 @@ class _ActorDetailsState extends State<ActorDetails> {
                           ],
                         ),
                       ),
-                      ActorDetailInfo(
+                      CarouselSlider.builder(
+                        itemCount: state.actorImages.length,
+                        options: CarouselOptions(
+                          height: 250,
+                          viewportFraction: 1.0,
+                          enableInfiniteScroll: true,
+                          autoPlay: true,
+                          autoPlayInterval: Duration(seconds: 3),
+                          autoPlayCurve: Curves.elasticInOut,
+                          enlargeCenterPage: false,
+                          scrollDirection: Axis.horizontal,
+                        ),
+                        itemBuilder: (context, int index, int pageViewIndex) =>
+                            MovieScreenImage(
+                          width: double.infinity,
+                          height: 250,
+                          imageUrl: state.actorImages[index].image,
+                        ),
+                      ),
+                      ActorDetailsInfo(
                         urlMovieImage: state.actor.image,
                         birthDate: state.actor.birthDate,
                         height: state.actor.height,
                         summary: state.actor.summary,
                         awards: state.actor.awards,
                       ),
-                      ActorMoviesSection(
-                        typeState: state.actorMovies,
+                      ActorFilmographySection(
+                        typeState: state.actor.actorMovies,
                         onTapMovieDetailsEvent: (movieId) {
                           bloc.add(
                             OnTapMovieDetailsEvent(movieIdEvent: movieId),
@@ -86,7 +107,6 @@ class _ActorDetailsState extends State<ActorDetails> {
                       )
                     ]),
               ),
-              bottomNavigationBar: BottomBar(),
             );
           }
           if (state is ActorDetailsEmptyState) {

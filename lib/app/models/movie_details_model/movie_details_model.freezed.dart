@@ -29,11 +29,13 @@ class _$MovieDetailsModelTearOff {
       required String imDbRating,
       required String year,
       required String plot,
-      required String genres,
       required String directors,
       required String countries,
       required String runtimeStr,
-      required String imDbRatingVotes}) {
+      required String imDbRatingVotes,
+      required List<GenreModel> genreList,
+      required List<ActorModel> actorList,
+      required List<MovieModel> similars}) {
     return _MovieDetailsModel(
       id: id,
       title: title,
@@ -41,11 +43,13 @@ class _$MovieDetailsModelTearOff {
       imDbRating: imDbRating,
       year: year,
       plot: plot,
-      genres: genres,
       directors: directors,
       countries: countries,
       runtimeStr: runtimeStr,
       imDbRatingVotes: imDbRatingVotes,
+      genreList: genreList,
+      actorList: actorList,
+      similars: similars,
     );
   }
 
@@ -65,11 +69,13 @@ mixin _$MovieDetailsModel {
   String get imDbRating => throw _privateConstructorUsedError;
   String get year => throw _privateConstructorUsedError;
   String get plot => throw _privateConstructorUsedError;
-  String get genres => throw _privateConstructorUsedError;
   String get directors => throw _privateConstructorUsedError;
   String get countries => throw _privateConstructorUsedError;
   String get runtimeStr => throw _privateConstructorUsedError;
   String get imDbRatingVotes => throw _privateConstructorUsedError;
+  List<GenreModel> get genreList => throw _privateConstructorUsedError;
+  List<ActorModel> get actorList => throw _privateConstructorUsedError;
+  List<MovieModel> get similars => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -89,11 +95,13 @@ abstract class $MovieDetailsModelCopyWith<$Res> {
       String imDbRating,
       String year,
       String plot,
-      String genres,
       String directors,
       String countries,
       String runtimeStr,
-      String imDbRatingVotes});
+      String imDbRatingVotes,
+      List<GenreModel> genreList,
+      List<ActorModel> actorList,
+      List<MovieModel> similars});
 }
 
 /// @nodoc
@@ -113,11 +121,13 @@ class _$MovieDetailsModelCopyWithImpl<$Res>
     Object? imDbRating = freezed,
     Object? year = freezed,
     Object? plot = freezed,
-    Object? genres = freezed,
     Object? directors = freezed,
     Object? countries = freezed,
     Object? runtimeStr = freezed,
     Object? imDbRatingVotes = freezed,
+    Object? genreList = freezed,
+    Object? actorList = freezed,
+    Object? similars = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -144,10 +154,6 @@ class _$MovieDetailsModelCopyWithImpl<$Res>
           ? _value.plot
           : plot // ignore: cast_nullable_to_non_nullable
               as String,
-      genres: genres == freezed
-          ? _value.genres
-          : genres // ignore: cast_nullable_to_non_nullable
-              as String,
       directors: directors == freezed
           ? _value.directors
           : directors // ignore: cast_nullable_to_non_nullable
@@ -164,6 +170,18 @@ class _$MovieDetailsModelCopyWithImpl<$Res>
           ? _value.imDbRatingVotes
           : imDbRatingVotes // ignore: cast_nullable_to_non_nullable
               as String,
+      genreList: genreList == freezed
+          ? _value.genreList
+          : genreList // ignore: cast_nullable_to_non_nullable
+              as List<GenreModel>,
+      actorList: actorList == freezed
+          ? _value.actorList
+          : actorList // ignore: cast_nullable_to_non_nullable
+              as List<ActorModel>,
+      similars: similars == freezed
+          ? _value.similars
+          : similars // ignore: cast_nullable_to_non_nullable
+              as List<MovieModel>,
     ));
   }
 }
@@ -182,11 +200,13 @@ abstract class _$MovieDetailsModelCopyWith<$Res>
       String imDbRating,
       String year,
       String plot,
-      String genres,
       String directors,
       String countries,
       String runtimeStr,
-      String imDbRatingVotes});
+      String imDbRatingVotes,
+      List<GenreModel> genreList,
+      List<ActorModel> actorList,
+      List<MovieModel> similars});
 }
 
 /// @nodoc
@@ -208,11 +228,13 @@ class __$MovieDetailsModelCopyWithImpl<$Res>
     Object? imDbRating = freezed,
     Object? year = freezed,
     Object? plot = freezed,
-    Object? genres = freezed,
     Object? directors = freezed,
     Object? countries = freezed,
     Object? runtimeStr = freezed,
     Object? imDbRatingVotes = freezed,
+    Object? genreList = freezed,
+    Object? actorList = freezed,
+    Object? similars = freezed,
   }) {
     return _then(_MovieDetailsModel(
       id: id == freezed
@@ -239,10 +261,6 @@ class __$MovieDetailsModelCopyWithImpl<$Res>
           ? _value.plot
           : plot // ignore: cast_nullable_to_non_nullable
               as String,
-      genres: genres == freezed
-          ? _value.genres
-          : genres // ignore: cast_nullable_to_non_nullable
-              as String,
       directors: directors == freezed
           ? _value.directors
           : directors // ignore: cast_nullable_to_non_nullable
@@ -259,6 +277,18 @@ class __$MovieDetailsModelCopyWithImpl<$Res>
           ? _value.imDbRatingVotes
           : imDbRatingVotes // ignore: cast_nullable_to_non_nullable
               as String,
+      genreList: genreList == freezed
+          ? _value.genreList
+          : genreList // ignore: cast_nullable_to_non_nullable
+              as List<GenreModel>,
+      actorList: actorList == freezed
+          ? _value.actorList
+          : actorList // ignore: cast_nullable_to_non_nullable
+              as List<ActorModel>,
+      similars: similars == freezed
+          ? _value.similars
+          : similars // ignore: cast_nullable_to_non_nullable
+              as List<MovieModel>,
     ));
   }
 }
@@ -273,11 +303,13 @@ class _$_MovieDetailsModel implements _MovieDetailsModel {
       required this.imDbRating,
       required this.year,
       required this.plot,
-      required this.genres,
       required this.directors,
       required this.countries,
       required this.runtimeStr,
-      required this.imDbRatingVotes});
+      required this.imDbRatingVotes,
+      required this.genreList,
+      required this.actorList,
+      required this.similars});
 
   factory _$_MovieDetailsModel.fromJson(Map<String, dynamic> json) =>
       _$$_MovieDetailsModelFromJson(json);
@@ -295,8 +327,6 @@ class _$_MovieDetailsModel implements _MovieDetailsModel {
   @override
   final String plot;
   @override
-  final String genres;
-  @override
   final String directors;
   @override
   final String countries;
@@ -304,10 +334,16 @@ class _$_MovieDetailsModel implements _MovieDetailsModel {
   final String runtimeStr;
   @override
   final String imDbRatingVotes;
+  @override
+  final List<GenreModel> genreList;
+  @override
+  final List<ActorModel> actorList;
+  @override
+  final List<MovieModel> similars;
 
   @override
   String toString() {
-    return 'MovieDetailsModel(id: $id, title: $title, image: $image, imDbRating: $imDbRating, year: $year, plot: $plot, genres: $genres, directors: $directors, countries: $countries, runtimeStr: $runtimeStr, imDbRatingVotes: $imDbRatingVotes)';
+    return 'MovieDetailsModel(id: $id, title: $title, image: $image, imDbRating: $imDbRating, year: $year, plot: $plot, directors: $directors, countries: $countries, runtimeStr: $runtimeStr, imDbRatingVotes: $imDbRatingVotes, genreList: $genreList, actorList: $actorList, similars: $similars)';
   }
 
   @override
@@ -322,13 +358,15 @@ class _$_MovieDetailsModel implements _MovieDetailsModel {
                 .equals(other.imDbRating, imDbRating) &&
             const DeepCollectionEquality().equals(other.year, year) &&
             const DeepCollectionEquality().equals(other.plot, plot) &&
-            const DeepCollectionEquality().equals(other.genres, genres) &&
             const DeepCollectionEquality().equals(other.directors, directors) &&
             const DeepCollectionEquality().equals(other.countries, countries) &&
             const DeepCollectionEquality()
                 .equals(other.runtimeStr, runtimeStr) &&
             const DeepCollectionEquality()
-                .equals(other.imDbRatingVotes, imDbRatingVotes));
+                .equals(other.imDbRatingVotes, imDbRatingVotes) &&
+            const DeepCollectionEquality().equals(other.genreList, genreList) &&
+            const DeepCollectionEquality().equals(other.actorList, actorList) &&
+            const DeepCollectionEquality().equals(other.similars, similars));
   }
 
   @override
@@ -340,11 +378,13 @@ class _$_MovieDetailsModel implements _MovieDetailsModel {
       const DeepCollectionEquality().hash(imDbRating),
       const DeepCollectionEquality().hash(year),
       const DeepCollectionEquality().hash(plot),
-      const DeepCollectionEquality().hash(genres),
       const DeepCollectionEquality().hash(directors),
       const DeepCollectionEquality().hash(countries),
       const DeepCollectionEquality().hash(runtimeStr),
-      const DeepCollectionEquality().hash(imDbRatingVotes));
+      const DeepCollectionEquality().hash(imDbRatingVotes),
+      const DeepCollectionEquality().hash(genreList),
+      const DeepCollectionEquality().hash(actorList),
+      const DeepCollectionEquality().hash(similars));
 
   @JsonKey(ignore: true)
   @override
@@ -365,11 +405,13 @@ abstract class _MovieDetailsModel implements MovieDetailsModel {
       required String imDbRating,
       required String year,
       required String plot,
-      required String genres,
       required String directors,
       required String countries,
       required String runtimeStr,
-      required String imDbRatingVotes}) = _$_MovieDetailsModel;
+      required String imDbRatingVotes,
+      required List<GenreModel> genreList,
+      required List<ActorModel> actorList,
+      required List<MovieModel> similars}) = _$_MovieDetailsModel;
 
   factory _MovieDetailsModel.fromJson(Map<String, dynamic> json) =
       _$_MovieDetailsModel.fromJson;
@@ -387,8 +429,6 @@ abstract class _MovieDetailsModel implements MovieDetailsModel {
   @override
   String get plot;
   @override
-  String get genres;
-  @override
   String get directors;
   @override
   String get countries;
@@ -396,6 +436,12 @@ abstract class _MovieDetailsModel implements MovieDetailsModel {
   String get runtimeStr;
   @override
   String get imDbRatingVotes;
+  @override
+  List<GenreModel> get genreList;
+  @override
+  List<ActorModel> get actorList;
+  @override
+  List<MovieModel> get similars;
   @override
   @JsonKey(ignore: true)
   _$MovieDetailsModelCopyWith<_MovieDetailsModel> get copyWith =>

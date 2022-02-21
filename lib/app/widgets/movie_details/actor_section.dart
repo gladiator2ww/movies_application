@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:movies_application/app/models/actor_movies_model.dart';
-import 'package:movies_application/app/widgets/movie_similar_card.dart';
+import 'package:movies_application/app/models/actor_model/actor_model.dart';
 import 'package:movies_application/generated/l10n.dart';
-import 'actor_movies_card.dart';
-import 'movie_model_card.dart';
+import 'actor_card.dart';
 
-class ActorMoviesSection extends StatelessWidget {
-  final List<ActorMoviesModel> typeState;
+class ActorSection extends StatelessWidget {
+  final List<ActorModel> typeState;
 
-  final void Function(String) onTapMovieDetailsEvent;
+  final void Function(String) onTapActorDetails;
 
-  const ActorMoviesSection({
+  const ActorSection({
     Key? key,
     required this.typeState,
-    required this.onTapMovieDetailsEvent,
+    required this.onTapActorDetails,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,7 @@ class ActorMoviesSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              S.of(context).filmography,
+              S.of(context).cast,
               style: Theme.of(context).textTheme.headline6,
             ),
             SizedBox(height: 5),
@@ -39,11 +37,11 @@ class ActorMoviesSection extends StatelessWidget {
                   final item = typeState[index];
 
                   return GestureDetector(
-                    onTap: () => onTapMovieDetailsEvent(item.id),
-                    child: ActorMoviesCard(
+                    onTap: () => onTapActorDetails(item.id),
+                    child: ActorCard(
                       itemImage: item.image,
-                      itemTitle: item.title,
-                      itemYear: item.year,
+                      itemName: item.name,
+                      asCharacter: item.asCharacter,
                     ),
                   );
                 },

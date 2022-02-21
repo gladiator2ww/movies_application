@@ -369,6 +369,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Top Box Office`
+  String get top_box_office {
+    return Intl.message(
+      'Top Box Office',
+      name: 'top_box_office',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `title`
+  String get title {
+    return Intl.message(
+      'title',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `weekend`
+  String get weekend {
+    return Intl.message(
+      'weekend',
+      name: 'weekend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `gross`
+  String get gross {
+    return Intl.message(
+      'gross',
+      name: 'gross',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `weeks`
+  String get weeks {
+    return Intl.message(
+      'weeks',
+      name: 'weeks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search movie...`
+  String get search_movie {
+    return Intl.message(
+      'Search movie...',
+      name: 'search_movie',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

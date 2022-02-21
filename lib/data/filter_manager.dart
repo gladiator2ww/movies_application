@@ -1,5 +1,5 @@
 import 'package:movies_application/app/models/filter_model.dart';
-import 'package:movies_application/app/models/movie_model.dart';
+import 'package:movies_application/app/models/movie_model/movie_model.dart';
 import 'package:movies_application/app/models/sorting.dart';
 
 class FilterManager {

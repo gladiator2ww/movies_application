@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:movies_application/app/pages/home.dart';
 import 'package:movies_application/app/pages/saved.dart';
 import 'package:movies_application/app/pages/search.dart';
@@ -6,8 +7,15 @@ import 'package:movies_application/app/pages/user.dart';
 import 'package:movies_application/app/theme/branding_colors.dart';
 import 'package:movies_application/generated/l10n.dart';
 
-
 class BottomBar extends StatefulWidget {
+  final int selectedIndexPage;
+  final void Function(int) onTapPage;
+  const BottomBar({
+    Key? key,
+    required this.selectedIndexPage,
+    required this.onTapPage,
+  }) : super(key: key);
+
   @override
   _BottomBarState createState() => _BottomBarState();
 }
@@ -15,18 +23,15 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
-    var _indexPage = 0;
-    final List _page = [
-      Home(),
-      SearchPage(),
-      SavedPage(),
-      UserPage(),
-    ];
+    
+    
     return BottomNavigationBar(
         unselectedItemColor: BrandingColors.primaryText.withOpacity(1),
         backgroundColor: BrandingColors.background.withOpacity(0.8),
         selectedItemColor: BrandingColors.primary,
         type: BottomNavigationBarType.fixed,
+        onTap: widget.onTapPage,
+        currentIndex: widget.selectedIndexPage,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
@@ -53,11 +58,9 @@ class _BottomBarState extends State<BottomBar> {
             label: S.of(context).you,
           ),
         ],
-        currentIndex: _indexPage,
-        onTap: (int index) {
-          setState(() {
-            _page[_indexPage] = index;
-          });
-        });
+    );
   }
 }
+//  setState(() {
+//             _page[_indexPage] = index;
+//           });

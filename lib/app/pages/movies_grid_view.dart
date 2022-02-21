@@ -72,7 +72,7 @@ class _MoviesGridViewState extends State<MoviesGridView> {
                       );
                     }),
               ),
-              bottomNavigationBar: BottomBar(),
+              
             );
           }
           if (state is MovieGridViewEmptyState) {

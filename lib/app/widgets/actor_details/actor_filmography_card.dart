@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:movies_application/app/theme/branding_colors.dart';
-import 'movie_image.dart';
+import '../movie_image.dart';
 
-class ActorMoviesCard extends StatelessWidget {
+class ActorFilmographyCard extends StatelessWidget {
   final String itemImage;
-
   final String itemTitle;
   final String itemYear;
 
-  const ActorMoviesCard({
+  const ActorFilmographyCard({
     Key? key,
     required this.itemImage,
     required this.itemTitle,

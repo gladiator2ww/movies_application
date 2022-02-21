@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 
-class GenresItems extends StatelessWidget {
-  final String genres;
-  GenresItems({
+class GenreItem extends StatelessWidget {
+  final String genre;
+  GenreItem({
     Key? key,
-    required this.genres,
+    required this.genre,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: EdgeInsets.only(right: 10, top: 15, bottom: 15, left: 10),
       elevation: 3,
       shape: BeveledRectangleBorder(
-        borderRadius: BorderRadius.circular(5.0),
+        borderRadius: BorderRadius.circular(2.0),
       ),
       child: Container(
-        width: 40,
-        height: 15,
+        alignment: Alignment.center,
+        width: 80,
+        height: 30,
         child: Text(
-          genres,
+          genre,
           style: Theme.of(context).textTheme.bodyText1,
         ),
       ),
