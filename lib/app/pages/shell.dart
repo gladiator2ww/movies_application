@@ -6,6 +6,7 @@ import 'package:movies_application/app/pages/saved.dart';
 import 'package:movies_application/app/pages/search.dart';
 import 'package:movies_application/app/pages/user.dart';
 import 'package:movies_application/app/widgets/bottom_bar.dart';
+import 'package:movies_application/app/widgets/my_circular_progress_indicator.dart';
 
 class Shell extends StatefulWidget {
   Shell({Key? key}) : super(key: key);
@@ -46,7 +47,7 @@ class _ShellState extends State<Shell> {
             ),
           );
         } else
-          return CircularProgressIndicator();
+          return MyCircularProgressIndicator();
       }),
     );
   }

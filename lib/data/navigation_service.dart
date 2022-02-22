@@ -21,10 +21,7 @@ enum Page {
 class NavigationService {
   final GlobalKey<NavigatorState> navigatorKey = Get.key;
 
-  
-
-  Future<dynamic>? navigateTo(
-      {required Page page, required Object arguments}) {
+  Future<dynamic>? navigateTo({required Page page, required Object arguments}) {
     final route = _generateRoute(page, arguments);
     return route != null ? navigatorKey.currentState?.push(route) : null;
   }
@@ -66,10 +63,10 @@ class NavigationService {
           movieId: movieId,
         );
         break;
-        case Page.actorDetails:
-        final movieId = arguments as String;
+      case Page.actorDetails:
+        final actorId = arguments as String;
         resultPage = ActorDetails(
-          movieId: movieId,
+          actorId: actorId,
         );
         break;
 

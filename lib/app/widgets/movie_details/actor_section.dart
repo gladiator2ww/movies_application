@@ -5,7 +5,6 @@ import 'actor_card.dart';
 
 class ActorSection extends StatelessWidget {
   final List<ActorModel> typeState;
-
   final void Function(String) onTapActorDetails;
 
   const ActorSection({

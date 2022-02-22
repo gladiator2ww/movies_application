@@ -5,6 +5,7 @@ import 'package:movies_application/generated/l10n.dart';
 
 class SearchAppBar extends StatefulWidget {
   final void Function(String) onChanged;
+
   SearchAppBar({
     required this.onChanged,
   }) : super();
@@ -59,7 +60,6 @@ class _SearchAppBarState extends State<SearchAppBar> {
   Widget build(BuildContext context) {
     return TextField(
       focusNode: _focusNode,
-      // onChanged: widget.onChanged,
       controller: _searchTextEditingController,
       style: Theme.of(context).textTheme.headline5,
       decoration: InputDecoration(

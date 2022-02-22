@@ -22,13 +22,13 @@ class MoviesRepository {
       _moviesProvider.fetchComingSoonMovies();
 
   Future<List<ShortImageModel>> getShortImage(String movieId) =>
-      _moviesProvider.fetchMovieShortImage(movieId);
+      _moviesProvider.fetchShortImage(movieId);
 
   Future<MovieDetailsModel> getMovieDetails(String movieId) =>
       _moviesProvider.fetchMovieDetails(movieId);
 
-  Future<ActorDetailsModel> getActorDetails(String movieId) =>
-      _moviesProvider.fetchActorDetails(movieId);
+  Future<ActorDetailsModel> getActorDetails(String actorId) =>
+      _moviesProvider.fetchActorDetails(actorId);
 
   Future<List<BoxOffice>> getBoxOffice() => _moviesProvider.fetchBoxOffice();
 

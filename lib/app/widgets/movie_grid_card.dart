@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movies_application/app/theme/branding_colors.dart';
-
 import 'movie_image.dart';
 
 class MovieGridCard extends StatelessWidget {
@@ -20,7 +19,6 @@ class MovieGridCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      // margin: EdgeInsets.only(top: 10, bottom: 10),
       elevation: 5,
       shape: BeveledRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:movies_application/generated/l10n.dart';
 
 class ActorDetailsInfo extends StatelessWidget {
   final String urlMovieImage;
-
   final String birthDate;
   final String height;
   final String summary;
@@ -47,21 +47,21 @@ class ActorDetailsInfo extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'born: $birthDate',
+                  '${S.of(context).born} $birthDate',
                   style: Theme.of(context).textTheme.subtitle1,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'awards: $awards',
+                  '${S.of(context).awards} $awards',
                   style: Theme.of(context).textTheme.subtitle1,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'height: $height',
+                  '${S.of(context).height} $height',
                   style: Theme.of(context).textTheme.subtitle1,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,

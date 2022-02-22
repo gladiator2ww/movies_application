@@ -11,6 +11,7 @@ import 'package:movies_application/app/widgets/my_circular_progress_indicator.da
 import 'package:movies_application/app/widgets/movie_details/similars_movies_section.dart';
 import 'package:movies_application/data/movies_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_application/generated/l10n.dart';
 
 class MovieDetails extends StatefulWidget {
   final String movieId;
@@ -32,10 +33,9 @@ class _MovieDetailsState extends State<MovieDetails> {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = MovieDetailsBloc(_moviesRepository)
-      ..add(MovieDetailsInitializeEvent(movieId: widget.movieId));
     return BlocProvider<MovieDetailsBloc>(
-      create: (context) => bloc,
+      create: (context) => MovieDetailsBloc(_moviesRepository)
+        ..add(MovieDetailsInitializeEvent(movieId: widget.movieId)),
       child: BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
         builder: (context, state) {
           if (state is MovieDetailsLoadingState) {
@@ -113,20 +113,20 @@ class _MovieDetailsState extends State<MovieDetails> {
                       MovieRankDetails(
                         rating: state.movie.imDbRating,
                         voteRating: state.movie.imDbRatingVotes,
-                        onTapAddSaved: () {},
+                        onTapAddSaved: () {}, //todo
                       ),
                       ActorSection(
                         typeState: state.movie.actorList,
-                        onTapActorDetails: (movieId) {
-                          bloc.add(
-                            OnTapActorDetailsEvent(movieIdEvent: movieId),
+                        onTapActorDetails: (actorId) {
+                          BlocProvider.of<MovieDetailsBloc>(context).add(
+                            OnTapActorDetailsEvent(actorIdEvent: actorId),
                           );
                         },
                       ),
                       SimilarsMoviesSection(
                         typeState: state.movie.similars,
                         onTapMovieDetailsEvent: (movieId) {
-                          bloc.add(
+                          BlocProvider.of<MovieDetailsBloc>(context).add(
                             OnTapMovieDetailsEvent(movieIdEvent: movieId),
                           );
                         },
@@ -136,12 +136,11 @@ class _MovieDetailsState extends State<MovieDetails> {
             );
           }
           if (state is MovieDetailsEmptyState) {
-            return Center(child: Text('No films'));
+            return Center(child: Text(S.of(context).not_found));
           }
-          return Text('Exeption');
+          return SizedBox();
         },
       ),
-      // ),
     );
   }
 }

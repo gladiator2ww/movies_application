@@ -7,15 +7,16 @@ class MoviesSection extends StatelessWidget {
   final List<MovieModel> typeState;
   final String name;
   final void Function() onTapSeeAll;
-  final void Function(String) onTapMovieView;
+  final void Function(String) onTapMovieDetails;
 
   const MoviesSection({
     Key? key,
     required this.typeState,
     required this.name,
     required this.onTapSeeAll,
-    required this.onTapMovieView,
+    required this.onTapMovieDetails,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -39,9 +40,8 @@ class MoviesSection extends StatelessWidget {
               itemCount: typeState.length,
               itemBuilder: (context, index) {
                 final item = typeState[index];
-
                 return GestureDetector(
-                  onTap: () => onTapMovieView(item.id),
+                  onTap: () => onTapMovieDetails(item.id),
                   child: MovieModelCard(
                     itemImage: item.image,
                     itemRating: item.imDbRating,

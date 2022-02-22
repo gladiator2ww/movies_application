@@ -5,7 +5,6 @@ import 'similar_movie_card.dart';
 
 class SimilarsMoviesSection extends StatelessWidget {
   final List<MovieModel> typeState;
-
   final void Function(String) onTapMovieDetailsEvent;
 
   const SimilarsMoviesSection({
@@ -13,6 +12,7 @@ class SimilarsMoviesSection extends StatelessWidget {
     required this.typeState,
     required this.onTapMovieDetailsEvent,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -35,7 +35,6 @@ class SimilarsMoviesSection extends StatelessWidget {
                 itemCount: typeState.length,
                 itemBuilder: (context, index) {
                   final item = typeState[index];
-
                   return GestureDetector(
                     onTap: () => onTapMovieDetailsEvent(item.id),
                     child: SimilarMovieCard(

@@ -23,9 +23,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = MovieModelBloc(_moviesRepository);
     return BlocProvider<MovieModelBloc>(
-      create: (context) => bloc,
+      create: (context) => MovieModelBloc(_moviesRepository),
       child: BlocBuilder<MovieModelBloc, MovieModelState>(
         builder: (context, state) {
           if (state is MovieModelLoadingState) {
@@ -69,7 +68,7 @@ class _HomeState extends State<Home> {
                           typeState: state.popularMovies,
                           name: S.of(context).most_popular_movies,
                           onTapSeeAll: () {
-                            bloc.add(
+                            BlocProvider.of<MovieModelBloc>(context).add(
                               OnTapSeeAllEvent(
                                 gridNavigationDataEvent: GridNavigationData(
                                   titleCategory: MoviesCategory.popularMovies,
@@ -78,8 +77,8 @@ class _HomeState extends State<Home> {
                               ),
                             );
                           },
-                          onTapMovieView: (movieId) {
-                            bloc.add(
+                          onTapMovieDetails: (movieId) {
+                            BlocProvider.of<MovieModelBloc>(context).add(
                               OnTapMovieDetailsEvent(movieIdEvent: movieId),
                             );
                           }),
@@ -87,7 +86,7 @@ class _HomeState extends State<Home> {
                           typeState: state.popularTvs,
                           name: S.of(context).most_popular_tvs,
                           onTapSeeAll: () {
-                            bloc.add(
+                            BlocProvider.of<MovieModelBloc>(context).add(
                               OnTapSeeAllEvent(
                                 gridNavigationDataEvent: GridNavigationData(
                                   titleCategory: MoviesCategory.popularTvs,
@@ -96,8 +95,8 @@ class _HomeState extends State<Home> {
                               ),
                             );
                           },
-                          onTapMovieView: (movieId) {
-                            bloc.add(
+                          onTapMovieDetails: (movieId) {
+                            BlocProvider.of<MovieModelBloc>(context).add(
                               OnTapMovieDetailsEvent(movieIdEvent: movieId),
                             );
                           }),
@@ -105,7 +104,7 @@ class _HomeState extends State<Home> {
                           typeState: state.top250Movies,
                           name: S.of(context).top_movies250,
                           onTapSeeAll: () {
-                            bloc.add(
+                            BlocProvider.of<MovieModelBloc>(context).add(
                               OnTapSeeAllEvent(
                                 gridNavigationDataEvent: GridNavigationData(
                                   titleCategory: MoviesCategory.top250Movies,
@@ -114,8 +113,8 @@ class _HomeState extends State<Home> {
                               ),
                             );
                           },
-                          onTapMovieView: (movieId) {
-                            bloc.add(
+                          onTapMovieDetails: (movieId) {
+                            BlocProvider.of<MovieModelBloc>(context).add(
                               OnTapMovieDetailsEvent(movieIdEvent: movieId),
                             );
                           }),
@@ -126,12 +125,11 @@ class _HomeState extends State<Home> {
             );
           }
           if (state is MovieModelEmptyState) {
-            return Center(child: Text('No films'));
+            return Center(child: Text(S.of(context).not_found));
           }
           return SizedBox();
         },
       ),
-      // ),
     );
   }
 }

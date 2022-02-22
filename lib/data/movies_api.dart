@@ -42,7 +42,7 @@ class MoviesProvider {
     return itemComingSoon;
   }
 
-  Future<List<ShortImageModel>> fetchMovieShortImage(String movieId) async {
+  Future<List<ShortImageModel>> fetchShortImage(String movieId) async {
     final data = await http.get(Uri.parse(
         'https://imdb-api.com/en/API/Images/${apiKey}/${movieId}/Short'));
 
@@ -58,9 +58,9 @@ class MoviesProvider {
     return itemMovieDetails;
   }
 
-  Future<ActorDetailsModel> fetchActorDetails(String movieId) async {
+  Future<ActorDetailsModel> fetchActorDetails(String actorId) async {
     final data = await http.get(
-        Uri.parse('https://imdb-api.com/en/API/Name/${apiKey}/${movieId}'));
+        Uri.parse('https://imdb-api.com/en/API/Name/${apiKey}/${actorId}'));
     final itemActor = ActorDetailsModel.fromJson(jsonDecode(data.body));
     return itemActor;
   }

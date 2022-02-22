@@ -4,6 +4,7 @@ class MovieDetailsTitle extends StatelessWidget {
   final String title;
   final String year;
   final String runtimeStr;
+  
   const MovieDetailsTitle({
     Key? key,
     required this.title,

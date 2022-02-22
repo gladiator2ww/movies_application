@@ -370,10 +370,10 @@ class S {
     );
   }
 
-  /// `Top Box Office`
+  /// `Top Box Office Movies`
   String get top_box_office {
     return Intl.message(
-      'Top Box Office',
+      'Top Box Office Movies',
       name: 'top_box_office',
       desc: '',
       args: [],
@@ -390,30 +390,30 @@ class S {
     );
   }
 
-  /// `weekend`
+  /// `weekend:`
   String get weekend {
     return Intl.message(
-      'weekend',
+      'weekend:',
       name: 'weekend',
       desc: '',
       args: [],
     );
   }
 
-  /// `gross`
+  /// `gross:`
   String get gross {
     return Intl.message(
-      'gross',
+      'gross:',
       name: 'gross',
       desc: '',
       args: [],
     );
   }
 
-  /// `weeks`
+  /// `weeks:`
   String get weeks {
     return Intl.message(
-      'weeks',
+      'weeks:',
       name: 'weeks',
       desc: '',
       args: [],
@@ -425,6 +425,76 @@ class S {
     return Intl.message(
       'Search movie...',
       name: 'search_movie',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not found`
+  String get not_found {
+    return Intl.message(
+      'Not found',
+      name: 'not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `born:`
+  String get born {
+    return Intl.message(
+      'born:',
+      name: 'born',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `awards:`
+  String get awards {
+    return Intl.message(
+      'awards:',
+      name: 'awards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `height:`
+  String get height {
+    return Intl.message(
+      'height:',
+      name: 'height',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `director:`
+  String get director {
+    return Intl.message(
+      'director:',
+      name: 'director',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `countries:`
+  String get countries {
+    return Intl.message(
+      'countries:',
+      name: 'countries',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `/10`
+  String get rate_of_10 {
+    return Intl.message(
+      '/10',
+      name: 'rate_of_10',
       desc: '',
       args: [],
     );

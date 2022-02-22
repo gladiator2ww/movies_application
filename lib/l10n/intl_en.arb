@@ -31,10 +31,19 @@
     "similars_movies" : "Similars Movies",
     "add_to_saved" : "Add to saved",
     "filmography": "Filmography",
-    "top_box_office": "Top Box Office",
+    "top_box_office": "Top Box Office Movies",
     "title": "title",
-    "weekend": "weekend",
-    "gross": "gross",
-    "weeks": "weeks",
-    "search_movie": "Search movie..."
+    "weekend": "weekend:",
+    "gross": "gross:",
+    "weeks": "weeks:",
+    "search_movie": "Search movie...",
+    "not_found": "Not found",
+    "born": "born:",
+    "awards": "awards:",
+    "height": "height:",
+    "director": "director:",
+    "countries":  "countries:",
+    "rate_of_10": "/10"
+    
+        
     }

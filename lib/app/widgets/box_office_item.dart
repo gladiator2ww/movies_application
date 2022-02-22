@@ -8,6 +8,7 @@ class BoxOfficeItem extends StatelessWidget {
   final String weekend;
   final String gross;
   final String weeks;
+
   BoxOfficeItem({
     Key? key,
     required this.title,
@@ -40,15 +41,15 @@ class BoxOfficeItem extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Text(
-                  'weekend: $weekend',
+                  '${S.of(context).weekend} $weekend',
                   style: Theme.of(context).textTheme.headline3,
                 ),
                 Text(
-                  'gross: $gross',
+                  '${S.of(context).gross} $gross',
                   style: Theme.of(context).textTheme.headline3,
                 ),
                 Text(
-                  'weeks: $weeks',
+                  '${S.of(context).weeks} $weeks',
                   style: Theme.of(context).textTheme.headline3,
                 ),
               ],

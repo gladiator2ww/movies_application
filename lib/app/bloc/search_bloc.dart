@@ -7,7 +7,7 @@ import 'package:movies_application/data/navigation_service.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final MoviesRepository _moviesRepository;
-  var _boxOffice = <BoxOffice>[];
+  var _boxOfficeMovies = <BoxOffice>[];
   var _searchResult = <SearchModel>[];
 
   SearchBloc(
@@ -22,17 +22,17 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       yield SearchLoadingState();
 
       try {
-        _boxOffice = await _moviesRepository.getBoxOffice();
+        _boxOfficeMovies = await _moviesRepository.getBoxOffice();
 
         yield SearchStartedLoadedState(
-          boxOfficeList: _boxOffice,
+          boxOfficeList: _boxOfficeMovies,
         );
       } catch (_) {
         yield SearchEmptyState();
       }
     } else if (event is SearchBeginEvent) {
-      _searchResult = await _moviesRepository.getSearchItems(event.titleId);
-      if (event.titleId.length > 2)
+      _searchResult = await _moviesRepository.getSearchItems(event.searchQuery);
+      if (event.searchQuery.length > 2)
         yield SearchResultLoadedState(
           resultSearch: _searchResult,
         );
@@ -41,7 +41,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         page: Page.movieDetails,
         arguments: event.movieId,
       );
-    } else if (event is OnTapTopBoxOfficeEvent) {
+    } else if (event is OnTapTopBoxOfficeMoviesEvent) {
       navigationService.navigateTo(
         page: Page.movieDetails,
         arguments: event.movieId,
@@ -55,22 +55,25 @@ abstract class SearchEvent {}
 class SearchInitializeEvent extends SearchEvent {}
 
 class SearchBeginEvent extends SearchEvent {
-  String titleId;
+  String searchQuery;
+
   SearchBeginEvent({
-    required this.titleId,
+    required this.searchQuery,
   });
 }
 
 class OnTapSearchResultItemEvent extends SearchEvent {
   String movieId;
+
   OnTapSearchResultItemEvent({
     required this.movieId,
   });
 }
 
-class OnTapTopBoxOfficeEvent extends SearchEvent {
+class OnTapTopBoxOfficeMoviesEvent extends SearchEvent {
   String movieId;
-  OnTapTopBoxOfficeEvent({
+
+  OnTapTopBoxOfficeMoviesEvent({
     required this.movieId,
   });
 }
@@ -89,6 +92,7 @@ class SearchStartedLoadedState extends SearchState {
 
 class SearchResultLoadedState extends SearchState {
   List<SearchModel> resultSearch;
+
   SearchResultLoadedState({
     required this.resultSearch,
   });

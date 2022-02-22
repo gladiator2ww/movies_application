@@ -59,6 +59,7 @@ class MovieModelLoadingState extends MovieModelState {}
 
 class OnTapSeeAllEvent extends MovieModelEvent {
   final GridNavigationData gridNavigationDataEvent;
+
   OnTapSeeAllEvent({
     required this.gridNavigationDataEvent,
   });
@@ -66,6 +67,7 @@ class OnTapSeeAllEvent extends MovieModelEvent {
 
 class OnTapMovieDetailsEvent extends MovieModelEvent {
   final String movieIdEvent;
+
   OnTapMovieDetailsEvent({
     required this.movieIdEvent,
   });

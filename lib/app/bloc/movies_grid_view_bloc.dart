@@ -66,6 +66,7 @@ abstract class MovieGridViewEvent {}
 
 class MovieGridViewInitializeEvent extends MovieGridViewEvent {
   final GridNavigationData gridNavigationDataEvent;
+
   MovieGridViewInitializeEvent({
     required this.gridNavigationDataEvent,
   });

@@ -17,6 +17,7 @@ abstract class ShellBlocEvent {}
 
 class SelectPageShellBlocEvent extends ShellBlocEvent {
   final int index;
+
   SelectPageShellBlocEvent({
     required this.index,
   });
@@ -26,6 +27,7 @@ abstract class ShellBlocState {}
 
 class SelectedPageShellBlocState extends ShellBlocState {
   final int index;
+  
   SelectedPageShellBlocState({
     required this.index,
   });

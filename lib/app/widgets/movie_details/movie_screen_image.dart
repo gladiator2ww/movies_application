@@ -13,6 +13,7 @@ class MovieScreenImage extends StatelessWidget {
     required this.imageUrl,
     Key? key,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(

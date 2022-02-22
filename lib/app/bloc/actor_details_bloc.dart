@@ -1,10 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_application/app/models/short_image/short_image.dart';
 import 'package:movies_application/data/dependency_service.dart';
 import 'package:movies_application/data/movies_repository.dart';
 import 'package:movies_application/data/navigation_service.dart';
 import 'package:movies_application/app/models/actor_details_model/actor_details_model.dart';
-
 
 class ActorDetailsBloc extends Bloc<ActorDetailsEvent, ActorDetailsState> {
   final MoviesRepository _moviesRepository;
@@ -14,7 +12,6 @@ class ActorDetailsBloc extends Bloc<ActorDetailsEvent, ActorDetailsState> {
   ) : super(ActorDetailsEmptyState());
 
   late ActorDetailsModel _actor;
-  var _actorImages = <ShortImageModel>[];
 
   @override
   Stream<ActorDetailsState> mapEventToState(ActorDetailsEvent event) async* {
@@ -22,12 +19,10 @@ class ActorDetailsBloc extends Bloc<ActorDetailsEvent, ActorDetailsState> {
       yield ActorDetailsLoadingState();
 
       try {
-        _actorImages = await _moviesRepository.getShortImage(event.movieId);
-        _actor = await _moviesRepository.getActorDetails(event.movieId);
+        _actor = await _moviesRepository.getActorDetails(event.actorId);
 
         yield ActorDetailsLoadedState(
           actor: _actor,
-          actorImages: _actorImages,
         );
       } catch (_) {
         yield ActorDetailsEmptyState();
@@ -42,14 +37,16 @@ class ActorDetailsBloc extends Bloc<ActorDetailsEvent, ActorDetailsState> {
 abstract class ActorDetailsEvent {}
 
 class ActorDetailsInitializeEvent extends ActorDetailsEvent {
-  final String movieId;
+  final String actorId;
+
   ActorDetailsInitializeEvent({
-    required this.movieId,
+    required this.actorId,
   });
 }
 
 class OnTapMovieDetailsEvent extends ActorDetailsEvent {
   final String movieIdEvent;
+
   OnTapMovieDetailsEvent({
     required this.movieIdEvent,
   });
@@ -61,11 +58,9 @@ class ActorDetailsLoadingState extends ActorDetailsState {}
 
 class ActorDetailsLoadedState extends ActorDetailsState {
   ActorDetailsModel actor;
-  List<ShortImageModel> actorImages;
 
   ActorDetailsLoadedState({
     required this.actor,
-    required this.actorImages,
   });
 }
 

@@ -36,7 +36,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
           page: Page.movieDetails, arguments: event.movieIdEvent);
     } else if (event is OnTapActorDetailsEvent) {
       navigationService.navigateTo(
-          page: Page.actorDetails, arguments: event.movieIdEvent);
+          page: Page.actorDetails, arguments: event.actorIdEvent);
     }
   }
 }
@@ -45,6 +45,7 @@ abstract class MovieDetailsEvent {}
 
 class MovieDetailsInitializeEvent extends MovieDetailsEvent {
   final String movieId;
+
   MovieDetailsInitializeEvent({
     required this.movieId,
   });
@@ -52,15 +53,17 @@ class MovieDetailsInitializeEvent extends MovieDetailsEvent {
 
 class OnTapMovieDetailsEvent extends MovieDetailsEvent {
   final String movieIdEvent;
+
   OnTapMovieDetailsEvent({
     required this.movieIdEvent,
   });
 }
 
 class OnTapActorDetailsEvent extends MovieDetailsEvent {
-  final String movieIdEvent;
+  final String actorIdEvent;
+
   OnTapActorDetailsEvent({
-    required this.movieIdEvent,
+    required this.actorIdEvent,
   });
 }
 

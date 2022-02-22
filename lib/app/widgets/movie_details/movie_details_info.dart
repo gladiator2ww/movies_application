@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_application/app/widgets/movie_details/movie_screen_image.dart';
+import 'package:movies_application/generated/l10n.dart';
 
 class MovieDetailsInfo extends StatelessWidget {
   final String urlMovieImage;
@@ -42,13 +43,13 @@ class MovieDetailsInfo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'directors: $directors',
+                    '${S.of(context).director} $directors',
                     style: Theme.of(context).textTheme.subtitle1,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                   ),
                   Text(
-                    'countries: $countries',
+                    '${S.of(context).countries} $countries',
                     style: Theme.of(context).textTheme.subtitle1,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'movie_image.dart';
 
 class ComingSoonMovies extends StatelessWidget {

@@ -18,9 +18,8 @@ class _SearchState extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = SearchBloc(_moviesRepository);
     return BlocProvider<SearchBloc>(
-      create: (context) => bloc,
+      create: (context) => SearchBloc(_moviesRepository),
       child: BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
         if (state is SearchLoadingState) {
           return Center(child: MyCircularProgressIndicator());
@@ -31,7 +30,7 @@ class _SearchState extends State<Search> {
               title: SearchAppBar(
                   onChanged: (value) => {
                         BlocProvider.of<SearchBloc>(context)
-                            .add(SearchBeginEvent(titleId: value))
+                            .add(SearchBeginEvent(searchQuery: value))
                       }),
             ),
             body: SizedBox(
@@ -53,7 +52,7 @@ class _SearchState extends State<Search> {
                           final item = state.boxOfficeList[index];
                           return GestureDetector(
                             onTap: () =>
-                                OnTapTopBoxOfficeEvent(movieId: item.id),
+                                OnTapTopBoxOfficeMoviesEvent(movieId: item.id),
                             child: BoxOfficeItem(
                               title: item.title,
                               image: item.image,
@@ -75,7 +74,7 @@ class _SearchState extends State<Search> {
               title: SearchAppBar(
                   onChanged: (value) => {
                         BlocProvider.of<SearchBloc>(context)
-                            .add(SearchBeginEvent(titleId: value))
+                            .add(SearchBeginEvent(searchQuery: value))
                       }),
             ),
             body: SizedBox(
@@ -88,8 +87,8 @@ class _SearchState extends State<Search> {
                     itemBuilder: (context, index) {
                       final item = state.resultSearch[index];
                       return GestureDetector(
-                        onTap: () =>
-                            OnTapSearchResultItemEvent(movieId: item.id),
+                        onTap: () => BlocProvider.of<SearchBloc>(context)
+                            .add(OnTapSearchResultItemEvent(movieId: item.id)),
                         child: SearchResultItem(
                           title: item.title,
                           image: item.image,
@@ -103,7 +102,7 @@ class _SearchState extends State<Search> {
         }
 
         if (state is SearchEmptyState) {
-          return Center(child: Text('No films'));
+          return Center(child: Text(S.of(context).not_found));
         }
         return SizedBox();
       }),
