@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movies_application/app/bloc/search_bloc.dart';
-import 'package:movies_application/app/widgets/box_office_item.dart';
+import 'package:movies_application/app/widgets/search/box_office_item.dart';
 import 'package:movies_application/app/widgets/my_circular_progress_indicator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_application/app/widgets/search_app_bar.dart';
-import 'package:movies_application/app/widgets/search_result_item.dart';
+import 'package:movies_application/app/widgets/search/search_app_bar.dart';
+import 'package:movies_application/app/widgets/search/search_result_item.dart';
 import 'package:movies_application/data/movies_repository.dart';
 import 'package:movies_application/generated/l10n.dart';
 
@@ -30,18 +30,20 @@ class _SearchState extends State<Search> {
               title: SearchAppBar(
                   onChanged: (value) => {
                         BlocProvider.of<SearchBloc>(context)
-                            .add(SearchBeginEvent(searchQuery: value))
+                            .add(SearchBottomClickEvent(searchQuery: value))
                       }),
             ),
             body: SizedBox(
               width: 500,
               child: Column(
                 children: [
-                  SizedBox(height: 10),
-                  Text(
-                    S.of(context).top_box_office,
-                    style: Theme.of(context).textTheme.headline6,
-                    textAlign: TextAlign.center,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                      S.of(context).top_box_office,
+                      style: Theme.of(context).textTheme.headline6,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                   Expanded(
                     child: ListView.builder(
@@ -74,7 +76,7 @@ class _SearchState extends State<Search> {
               title: SearchAppBar(
                   onChanged: (value) => {
                         BlocProvider.of<SearchBloc>(context)
-                            .add(SearchBeginEvent(searchQuery: value))
+                            .add(SearchBottomClickEvent(searchQuery: value))
                       }),
             ),
             body: SizedBox(

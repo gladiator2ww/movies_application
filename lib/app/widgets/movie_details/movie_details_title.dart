@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class MovieDetailsTitle extends StatelessWidget {
   final String title;
   final String year;
-  final String runtimeStr;
-  
+  final String? runtimeStr;
+
   const MovieDetailsTitle({
     Key? key,
     required this.title,
@@ -29,14 +29,14 @@ class MovieDetailsTitle extends StatelessWidget {
             children: [
               Text(
                 year,
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context).textTheme.subtitle1,
               ),
               SizedBox(
                 width: 40,
               ),
               Text(
-                runtimeStr,
-                style: Theme.of(context).textTheme.bodyText1,
+                runtimeStr ?? '',
+                style: Theme.of(context).textTheme.subtitle1,
               ),
             ],
           ),

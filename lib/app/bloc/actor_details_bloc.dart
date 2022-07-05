@@ -37,7 +37,7 @@ class ActorDetailsBloc extends Bloc<ActorDetailsEvent, ActorDetailsState> {
 abstract class ActorDetailsEvent {}
 
 class ActorDetailsInitializeEvent extends ActorDetailsEvent {
-  final String actorId;
+  String actorId;
 
   ActorDetailsInitializeEvent({
     required this.actorId,

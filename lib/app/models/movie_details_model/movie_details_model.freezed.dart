@@ -26,13 +26,13 @@ class _$MovieDetailsModelTearOff {
       {required String id,
       required String title,
       required String image,
-      required String imDbRating,
-      required String year,
+      required String? imDbRating,
+      required String? year,
       required String plot,
       required String directors,
       required String countries,
-      required String runtimeStr,
-      required String imDbRatingVotes,
+      required String? runtimeStr,
+      required String? imDbRatingVotes,
       required List<GenreModel> genreList,
       required List<ActorModel> actorList,
       required List<MovieModel> similars}) {
@@ -66,13 +66,13 @@ mixin _$MovieDetailsModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
-  String get imDbRating => throw _privateConstructorUsedError;
-  String get year => throw _privateConstructorUsedError;
+  String? get imDbRating => throw _privateConstructorUsedError;
+  String? get year => throw _privateConstructorUsedError;
   String get plot => throw _privateConstructorUsedError;
   String get directors => throw _privateConstructorUsedError;
   String get countries => throw _privateConstructorUsedError;
-  String get runtimeStr => throw _privateConstructorUsedError;
-  String get imDbRatingVotes => throw _privateConstructorUsedError;
+  String? get runtimeStr => throw _privateConstructorUsedError;
+  String? get imDbRatingVotes => throw _privateConstructorUsedError;
   List<GenreModel> get genreList => throw _privateConstructorUsedError;
   List<ActorModel> get actorList => throw _privateConstructorUsedError;
   List<MovieModel> get similars => throw _privateConstructorUsedError;
@@ -92,13 +92,13 @@ abstract class $MovieDetailsModelCopyWith<$Res> {
       {String id,
       String title,
       String image,
-      String imDbRating,
-      String year,
+      String? imDbRating,
+      String? year,
       String plot,
       String directors,
       String countries,
-      String runtimeStr,
-      String imDbRatingVotes,
+      String? runtimeStr,
+      String? imDbRatingVotes,
       List<GenreModel> genreList,
       List<ActorModel> actorList,
       List<MovieModel> similars});
@@ -145,11 +145,11 @@ class _$MovieDetailsModelCopyWithImpl<$Res>
       imDbRating: imDbRating == freezed
           ? _value.imDbRating
           : imDbRating // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       year: year == freezed
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       plot: plot == freezed
           ? _value.plot
           : plot // ignore: cast_nullable_to_non_nullable
@@ -165,11 +165,11 @@ class _$MovieDetailsModelCopyWithImpl<$Res>
       runtimeStr: runtimeStr == freezed
           ? _value.runtimeStr
           : runtimeStr // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       imDbRatingVotes: imDbRatingVotes == freezed
           ? _value.imDbRatingVotes
           : imDbRatingVotes // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       genreList: genreList == freezed
           ? _value.genreList
           : genreList // ignore: cast_nullable_to_non_nullable
@@ -197,13 +197,13 @@ abstract class _$MovieDetailsModelCopyWith<$Res>
       {String id,
       String title,
       String image,
-      String imDbRating,
-      String year,
+      String? imDbRating,
+      String? year,
       String plot,
       String directors,
       String countries,
-      String runtimeStr,
-      String imDbRatingVotes,
+      String? runtimeStr,
+      String? imDbRatingVotes,
       List<GenreModel> genreList,
       List<ActorModel> actorList,
       List<MovieModel> similars});
@@ -252,11 +252,11 @@ class __$MovieDetailsModelCopyWithImpl<$Res>
       imDbRating: imDbRating == freezed
           ? _value.imDbRating
           : imDbRating // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       year: year == freezed
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       plot: plot == freezed
           ? _value.plot
           : plot // ignore: cast_nullable_to_non_nullable
@@ -272,11 +272,11 @@ class __$MovieDetailsModelCopyWithImpl<$Res>
       runtimeStr: runtimeStr == freezed
           ? _value.runtimeStr
           : runtimeStr // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       imDbRatingVotes: imDbRatingVotes == freezed
           ? _value.imDbRatingVotes
           : imDbRatingVotes // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       genreList: genreList == freezed
           ? _value.genreList
           : genreList // ignore: cast_nullable_to_non_nullable
@@ -321,9 +321,9 @@ class _$_MovieDetailsModel implements _MovieDetailsModel {
   @override
   final String image;
   @override
-  final String imDbRating;
+  final String? imDbRating;
   @override
-  final String year;
+  final String? year;
   @override
   final String plot;
   @override
@@ -331,9 +331,9 @@ class _$_MovieDetailsModel implements _MovieDetailsModel {
   @override
   final String countries;
   @override
-  final String runtimeStr;
+  final String? runtimeStr;
   @override
-  final String imDbRatingVotes;
+  final String? imDbRatingVotes;
   @override
   final List<GenreModel> genreList;
   @override
@@ -402,13 +402,13 @@ abstract class _MovieDetailsModel implements MovieDetailsModel {
       {required String id,
       required String title,
       required String image,
-      required String imDbRating,
-      required String year,
+      required String? imDbRating,
+      required String? year,
       required String plot,
       required String directors,
       required String countries,
-      required String runtimeStr,
-      required String imDbRatingVotes,
+      required String? runtimeStr,
+      required String? imDbRatingVotes,
       required List<GenreModel> genreList,
       required List<ActorModel> actorList,
       required List<MovieModel> similars}) = _$_MovieDetailsModel;
@@ -423,9 +423,9 @@ abstract class _MovieDetailsModel implements MovieDetailsModel {
   @override
   String get image;
   @override
-  String get imDbRating;
+  String? get imDbRating;
   @override
-  String get year;
+  String? get year;
   @override
   String get plot;
   @override
@@ -433,9 +433,9 @@ abstract class _MovieDetailsModel implements MovieDetailsModel {
   @override
   String get countries;
   @override
-  String get runtimeStr;
+  String? get runtimeStr;
   @override
-  String get imDbRatingVotes;
+  String? get imDbRatingVotes;
   @override
   List<GenreModel> get genreList;
   @override

@@ -14,7 +14,7 @@ class ActorDetailsModel with _$ActorDetailsModel {
     required String height,
     required String birthDate,
     required String awards,
-    required List<ActorFilmographyModel> actorMovies,
+    required List<ActorFilmographyModel> knownFor,
   }) = _ActorDetailsModel;
 
   factory ActorDetailsModel.fromJson(Map<String, dynamic> data) =>

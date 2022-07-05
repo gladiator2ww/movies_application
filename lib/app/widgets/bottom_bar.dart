@@ -47,7 +47,7 @@ class _BottomBarState extends State<BottomBar> {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.person,
+            Icons.settings,
           ),
           label: S.of(context).you,
         ),

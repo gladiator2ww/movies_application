@@ -2,11 +2,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_application/app/bloc/movies_grid_view_bloc.dart';
 import 'package:movies_application/data/grid_navigation_data.dart';
-import 'package:movies_application/app/widgets/bottom_bar.dart';
 import 'package:movies_application/app/widgets/buttons/filter_button.dart';
 import 'package:movies_application/app/widgets/movie_grid_card.dart';
 import 'package:movies_application/app/widgets/my_circular_progress_indicator.dart';
 import 'package:movies_application/data/movies_repository.dart';
+import 'package:movies_application/generated/l10n.dart';
 
 class MoviesGridView extends StatefulWidget {
   final GridNavigationData gridNavigationData;
@@ -39,19 +39,16 @@ class _MoviesGridViewState extends State<MoviesGridView> {
           if (state is MovieGridViewLoadedState) {
             return Scaffold(
               appBar: AppBar(
-                title: Row(
-                  children: [
-                    Text(
-                      widget.gridNavigationData.name,
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                    Spacer(),
-                    FilterButton(onTap: () {
-                      BlocProvider.of<MovieGridViewBloc>(context)
-                          .add(MoviesGridViewShowDialogEvent());
-                    }),
-                  ],
+                title: Text(
+                  widget.gridNavigationData.name,
+                  style: Theme.of(context).textTheme.headline6,
                 ),
+                actions: [
+                  FilterButton(onTap: () {
+                    BlocProvider.of<MovieGridViewBloc>(context)
+                        .add(MoviesGridViewShowDialogEvent());
+                  }),
+                ],
               ),
               body: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -64,21 +61,26 @@ class _MoviesGridViewState extends State<MoviesGridView> {
                     itemCount: state.moviesList.length,
                     itemBuilder: (context, index) {
                       final item = state.moviesList[index];
-                      return MovieGridCard(
-                        itemImage: item.image,
-                        itemRating: item.imDbRating,
-                        itemTitle: item.title,
-                        itemYear: item.year,
+                      return GestureDetector(
+                        onTap: () => BlocProvider.of<MovieGridViewBloc>(context)
+                            .add(OnTapMovieDetailsEvent(movieIdEvent: item.id)),
+                        child: MovieGridCard(
+                          itemImage: item.image,
+                          itemRating: item.imDbRating ?? '',
+                          itemTitle: item.title,
+                          itemYear: item.year ?? '',
+                        ),
                       );
                     }),
               ),
-              
             );
           }
           if (state is MovieGridViewEmptyState) {
-            return Center(child: Text('No films'));
+            return Center(
+              child: Text(S.of(context).not_found),
+            );
           }
-          return Text('Exeption');
+          return SizedBox();
         },
       ),
 

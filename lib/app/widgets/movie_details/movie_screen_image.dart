@@ -17,8 +17,10 @@ class MovieScreenImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      placeholder: (context, url) =>
-          Center(child: MyCircularProgressIndicator()),
+      placeholder: (context, url) => SizedBox(
+          width: width,
+          height: height,
+          child: Center(child: MyCircularProgressIndicator())),
       imageUrl: imageUrl,
       errorWidget: (context, url, error) => const Icon(Icons.error),
       fadeInCurve: Curves.easeIn,

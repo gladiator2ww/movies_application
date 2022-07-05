@@ -31,7 +31,7 @@ class _$ActorDetailsModelTearOff {
       required String height,
       required String birthDate,
       required String awards,
-      required List<ActorFilmographyModel> actorMovies}) {
+      required List<ActorFilmographyModel> knownFor}) {
     return _ActorDetailsModel(
       id: id,
       name: name,
@@ -41,7 +41,7 @@ class _$ActorDetailsModelTearOff {
       height: height,
       birthDate: birthDate,
       awards: awards,
-      actorMovies: actorMovies,
+      knownFor: knownFor,
     );
   }
 
@@ -63,7 +63,7 @@ mixin _$ActorDetailsModel {
   String get height => throw _privateConstructorUsedError;
   String get birthDate => throw _privateConstructorUsedError;
   String get awards => throw _privateConstructorUsedError;
-  List<ActorFilmographyModel> get actorMovies =>
+  List<ActorFilmographyModel> get knownFor =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -86,7 +86,7 @@ abstract class $ActorDetailsModelCopyWith<$Res> {
       String height,
       String birthDate,
       String awards,
-      List<ActorFilmographyModel> actorMovies});
+      List<ActorFilmographyModel> knownFor});
 }
 
 /// @nodoc
@@ -108,7 +108,7 @@ class _$ActorDetailsModelCopyWithImpl<$Res>
     Object? height = freezed,
     Object? birthDate = freezed,
     Object? awards = freezed,
-    Object? actorMovies = freezed,
+    Object? knownFor = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -143,9 +143,9 @@ class _$ActorDetailsModelCopyWithImpl<$Res>
           ? _value.awards
           : awards // ignore: cast_nullable_to_non_nullable
               as String,
-      actorMovies: actorMovies == freezed
-          ? _value.actorMovies
-          : actorMovies // ignore: cast_nullable_to_non_nullable
+      knownFor: knownFor == freezed
+          ? _value.knownFor
+          : knownFor // ignore: cast_nullable_to_non_nullable
               as List<ActorFilmographyModel>,
     ));
   }
@@ -167,7 +167,7 @@ abstract class _$ActorDetailsModelCopyWith<$Res>
       String height,
       String birthDate,
       String awards,
-      List<ActorFilmographyModel> actorMovies});
+      List<ActorFilmographyModel> knownFor});
 }
 
 /// @nodoc
@@ -191,7 +191,7 @@ class __$ActorDetailsModelCopyWithImpl<$Res>
     Object? height = freezed,
     Object? birthDate = freezed,
     Object? awards = freezed,
-    Object? actorMovies = freezed,
+    Object? knownFor = freezed,
   }) {
     return _then(_ActorDetailsModel(
       id: id == freezed
@@ -226,9 +226,9 @@ class __$ActorDetailsModelCopyWithImpl<$Res>
           ? _value.awards
           : awards // ignore: cast_nullable_to_non_nullable
               as String,
-      actorMovies: actorMovies == freezed
-          ? _value.actorMovies
-          : actorMovies // ignore: cast_nullable_to_non_nullable
+      knownFor: knownFor == freezed
+          ? _value.knownFor
+          : knownFor // ignore: cast_nullable_to_non_nullable
               as List<ActorFilmographyModel>,
     ));
   }
@@ -246,7 +246,7 @@ class _$_ActorDetailsModel implements _ActorDetailsModel {
       required this.height,
       required this.birthDate,
       required this.awards,
-      required this.actorMovies});
+      required this.knownFor});
 
   factory _$_ActorDetailsModel.fromJson(Map<String, dynamic> json) =>
       _$$_ActorDetailsModelFromJson(json);
@@ -268,11 +268,11 @@ class _$_ActorDetailsModel implements _ActorDetailsModel {
   @override
   final String awards;
   @override
-  final List<ActorFilmographyModel> actorMovies;
+  final List<ActorFilmographyModel> knownFor;
 
   @override
   String toString() {
-    return 'ActorDetailsModel(id: $id, name: $name, image: $image, role: $role, summary: $summary, height: $height, birthDate: $birthDate, awards: $awards, actorMovies: $actorMovies)';
+    return 'ActorDetailsModel(id: $id, name: $name, image: $image, role: $role, summary: $summary, height: $height, birthDate: $birthDate, awards: $awards, knownFor: $knownFor)';
   }
 
   @override
@@ -288,8 +288,7 @@ class _$_ActorDetailsModel implements _ActorDetailsModel {
             const DeepCollectionEquality().equals(other.height, height) &&
             const DeepCollectionEquality().equals(other.birthDate, birthDate) &&
             const DeepCollectionEquality().equals(other.awards, awards) &&
-            const DeepCollectionEquality()
-                .equals(other.actorMovies, actorMovies));
+            const DeepCollectionEquality().equals(other.knownFor, knownFor));
   }
 
   @override
@@ -303,7 +302,7 @@ class _$_ActorDetailsModel implements _ActorDetailsModel {
       const DeepCollectionEquality().hash(height),
       const DeepCollectionEquality().hash(birthDate),
       const DeepCollectionEquality().hash(awards),
-      const DeepCollectionEquality().hash(actorMovies));
+      const DeepCollectionEquality().hash(knownFor));
 
   @JsonKey(ignore: true)
   @override
@@ -326,7 +325,7 @@ abstract class _ActorDetailsModel implements ActorDetailsModel {
       required String height,
       required String birthDate,
       required String awards,
-      required List<ActorFilmographyModel> actorMovies}) = _$_ActorDetailsModel;
+      required List<ActorFilmographyModel> knownFor}) = _$_ActorDetailsModel;
 
   factory _ActorDetailsModel.fromJson(Map<String, dynamic> json) =
       _$_ActorDetailsModel.fromJson;
@@ -348,7 +347,7 @@ abstract class _ActorDetailsModel implements ActorDetailsModel {
   @override
   String get awards;
   @override
-  List<ActorFilmographyModel> get actorMovies;
+  List<ActorFilmographyModel> get knownFor;
   @override
   @JsonKey(ignore: true)
   _$ActorDetailsModelCopyWith<_ActorDetailsModel> get copyWith =>

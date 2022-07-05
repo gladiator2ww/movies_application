@@ -50,7 +50,6 @@ class _SearchAppBarState extends State<SearchAppBar> {
           (oldSearch.length > _searchTextEditingController.text.length &&
               _searchTextEditingController.text.isNotEmpty)) {
         oldSearch = _searchTextEditingController.text;
-        print('123onChanged ${_searchTextEditingController.text}');
         widget.onChanged(_searchTextEditingController.text);
       }
     });

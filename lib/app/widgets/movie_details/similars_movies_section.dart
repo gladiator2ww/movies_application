@@ -40,7 +40,7 @@ class SimilarsMoviesSection extends StatelessWidget {
                     child: SimilarMovieCard(
                       itemImage: item.image,
                       itemTitle: item.title,
-                      itemRating: item.imDbRating,
+                      itemRating: item.imDbRating ?? '',
                     ),
                   );
                 },

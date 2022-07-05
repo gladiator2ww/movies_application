@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:movies_application/app/theme/branding_colors.dart';
-
 import '../movie_image.dart';
 
 class SimilarMovieCard extends StatelessWidget {
@@ -19,16 +17,17 @@ class SimilarMovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.only(right: 10),
-      elevation: 3,
+      margin: EdgeInsets.only(right: 10, bottom: 10),
+      elevation: 5,
       shape: BeveledRectangleBorder(
-        borderRadius: BorderRadius.circular(5.0),
+        borderRadius: BorderRadius.circular(3.0),
       ),
       child: SizedBox(
         height: 260,
         width: 140,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MovieImage(width: 140, height: 210, imageUrl: itemImage),
             Row(

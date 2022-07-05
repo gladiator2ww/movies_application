@@ -18,9 +18,9 @@ class ComingSoonMovies extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: BeveledRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(3),
       ),
-      margin: EdgeInsets.only(bottom: 10, right: 10, left: 10),
+      margin: EdgeInsets.only(bottom: 10, right: 10, left: 10, top: 0),
       elevation: 5,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -28,7 +28,7 @@ class ComingSoonMovies extends StatelessWidget {
         children: [
           MovieImage(
             width: 300,
-            height: 360,
+            height: 380,
             imageUrl: itemImage,
           ),
           Text(

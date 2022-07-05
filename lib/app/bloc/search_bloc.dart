@@ -30,7 +30,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       } catch (_) {
         yield SearchEmptyState();
       }
-    } else if (event is SearchBeginEvent) {
+    } else if (event is SearchBottomClickEvent) {
       _searchResult = await _moviesRepository.getSearchItems(event.searchQuery);
       if (event.searchQuery.length > 2)
         yield SearchResultLoadedState(
@@ -54,10 +54,10 @@ abstract class SearchEvent {}
 
 class SearchInitializeEvent extends SearchEvent {}
 
-class SearchBeginEvent extends SearchEvent {
+class SearchBottomClickEvent extends SearchEvent {
   String searchQuery;
 
-  SearchBeginEvent({
+  SearchBottomClickEvent({
     required this.searchQuery,
   });
 }

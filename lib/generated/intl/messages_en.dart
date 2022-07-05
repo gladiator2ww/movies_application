@@ -32,7 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "coming_soon": MessageLookupByLibrary.simpleMessage("Coming Soon"),
         "connection_service": MessageLookupByLibrary.simpleMessage(
             "Connection to the server, please wait"),
-        "countries": MessageLookupByLibrary.simpleMessage("countries:"),
+        "countries": MessageLookupByLibrary.simpleMessage("country:"),
         "director": MessageLookupByLibrary.simpleMessage("director:"),
         "done": MessageLookupByLibrary.simpleMessage("DONE"),
         "filmography": MessageLookupByLibrary.simpleMessage("Filmography"),
@@ -71,12 +71,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Top Box Office Movies"),
         "top_movies250": MessageLookupByLibrary.simpleMessage("Top 250 Movies"),
         "top_tvs250": MessageLookupByLibrary.simpleMessage("Top 250 TVs"),
+        "watch_trailer": MessageLookupByLibrary.simpleMessage("Watch Trailer"),
         "weekend": MessageLookupByLibrary.simpleMessage("weekend:"),
         "weeks": MessageLookupByLibrary.simpleMessage("weeks:"),
         "year_late_to_new":
             MessageLookupByLibrary.simpleMessage("by year ascending"),
         "year_new_to_late":
             MessageLookupByLibrary.simpleMessage("by year descending"),
-        "you": MessageLookupByLibrary.simpleMessage("You")
+        "you": MessageLookupByLibrary.simpleMessage("Settings")
       };
 }

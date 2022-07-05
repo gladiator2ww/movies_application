@@ -21,7 +21,7 @@ class MovieGridCard extends StatelessWidget {
     return Card(
       elevation: 5,
       shape: BeveledRectangleBorder(
-        borderRadius: BorderRadius.circular(5.0),
+        borderRadius: BorderRadius.circular(3.0),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

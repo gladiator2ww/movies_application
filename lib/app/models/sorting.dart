@@ -1,4 +1,3 @@
-
 import 'package:movies_application/data/dependency_service.dart';
 
 enum Sorting {
@@ -19,7 +18,7 @@ enum Filters {
   rank9Up,
 }
 
-extension SortingExtention on Sorting {
+extension SortingExtension on Sorting {
   String toSortingString() {
     switch (this) {
       case Sorting.nameAToZ:

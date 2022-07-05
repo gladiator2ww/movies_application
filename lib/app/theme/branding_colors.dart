@@ -7,6 +7,8 @@ class BrandingColors {
   static const Color stringFilters = Color(0xFFEEEEEE);
   static const Color stringSorting = Color(0xFFE0E0E0);
   static const Color backgroundIcon = Color(0xFF69F0AE);
+    // static const Color backgroundSavedIcon = Colors.blue.opacity(0.2);
+
   static const Color primaryText = Color(0xFF000000);
   static const Color secondaryText = Color(0x8A000000);
   static const Color primary = Color(0xFF01579B);

@@ -26,8 +26,8 @@ class _$MovieModelTearOff {
       {required String id,
       required String title,
       required String image,
-      required String imDbRating,
-      required String year}) {
+      required String? imDbRating,
+      required String? year}) {
     return _MovieModel(
       id: id,
       title: title,
@@ -50,8 +50,8 @@ mixin _$MovieModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
-  String get imDbRating => throw _privateConstructorUsedError;
-  String get year => throw _privateConstructorUsedError;
+  String? get imDbRating => throw _privateConstructorUsedError;
+  String? get year => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,7 +65,11 @@ abstract class $MovieModelCopyWith<$Res> {
           MovieModel value, $Res Function(MovieModel) then) =
       _$MovieModelCopyWithImpl<$Res>;
   $Res call(
-      {String id, String title, String image, String imDbRating, String year});
+      {String id,
+      String title,
+      String image,
+      String? imDbRating,
+      String? year});
 }
 
 /// @nodoc
@@ -100,11 +104,11 @@ class _$MovieModelCopyWithImpl<$Res> implements $MovieModelCopyWith<$Res> {
       imDbRating: imDbRating == freezed
           ? _value.imDbRating
           : imDbRating // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       year: year == freezed
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -116,7 +120,11 @@ abstract class _$MovieModelCopyWith<$Res> implements $MovieModelCopyWith<$Res> {
       __$MovieModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id, String title, String image, String imDbRating, String year});
+      {String id,
+      String title,
+      String image,
+      String? imDbRating,
+      String? year});
 }
 
 /// @nodoc
@@ -153,11 +161,11 @@ class __$MovieModelCopyWithImpl<$Res> extends _$MovieModelCopyWithImpl<$Res>
       imDbRating: imDbRating == freezed
           ? _value.imDbRating
           : imDbRating // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       year: year == freezed
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -182,9 +190,9 @@ class _$_MovieModel implements _MovieModel {
   @override
   final String image;
   @override
-  final String imDbRating;
+  final String? imDbRating;
   @override
-  final String year;
+  final String? year;
 
   @override
   String toString() {
@@ -229,8 +237,8 @@ abstract class _MovieModel implements MovieModel {
       {required String id,
       required String title,
       required String image,
-      required String imDbRating,
-      required String year}) = _$_MovieModel;
+      required String? imDbRating,
+      required String? year}) = _$_MovieModel;
 
   factory _MovieModel.fromJson(Map<String, dynamic> json) =
       _$_MovieModel.fromJson;
@@ -242,9 +250,9 @@ abstract class _MovieModel implements MovieModel {
   @override
   String get image;
   @override
-  String get imDbRating;
+  String? get imDbRating;
   @override
-  String get year;
+  String? get year;
   @override
   @JsonKey(ignore: true)
   _$MovieModelCopyWith<_MovieModel> get copyWith =>

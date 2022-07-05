@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:movies_application/app/pages/actor_details.dart';
+import 'package:movies_application/app/pages/movie_trailer.dart';
 import 'package:movies_application/data/grid_navigation_data.dart';
 import 'package:movies_application/app/pages/home.dart';
 import 'package:movies_application/app/pages/movie_details.dart';
@@ -16,6 +17,7 @@ enum Page {
   moviesGridView,
   movieDetails,
   actorDetails,
+  trailer,
 }
 
 class NavigationService {
@@ -69,7 +71,12 @@ class NavigationService {
           actorId: actorId,
         );
         break;
-
+case Page.trailer:
+        final movieId = arguments as String;
+        resultPage = MovieTrailer(
+          movieId: movieId,
+        );
+        break;
       default:
         resultPage = Home();
         break;

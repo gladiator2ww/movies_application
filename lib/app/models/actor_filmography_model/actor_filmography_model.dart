@@ -5,7 +5,7 @@ part 'actor_filmography_model.g.dart';
 @freezed
 class ActorFilmographyModel with _$ActorFilmographyModel{
   factory ActorFilmographyModel({
-required String id,
+    required String id,
     required String title,
     required String image,
     required String year,

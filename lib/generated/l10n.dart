@@ -140,10 +140,10 @@ class S {
     );
   }
 
-  /// `You`
+  /// `Settings`
   String get you {
     return Intl.message(
-      'You',
+      'Settings',
       name: 'you',
       desc: '',
       args: [],
@@ -480,10 +480,10 @@ class S {
     );
   }
 
-  /// `countries:`
+  /// `country:`
   String get countries {
     return Intl.message(
-      'countries:',
+      'country:',
       name: 'countries',
       desc: '',
       args: [],
@@ -499,6 +499,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Watch Trailer`
+  String get watch_trailer {
+    return Intl.message(
+      'Watch Trailer',
+      name: 'watch_trailer',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -507,6 +517,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ru'),
     ];
   }
 

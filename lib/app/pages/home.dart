@@ -2,11 +2,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_application/app/bloc/movie_model_home_bloc.dart';
+import 'package:movies_application/app/bloc/saved_bloc_mediator.dart';
+import 'package:movies_application/data/dependency_service.dart';
 import 'package:movies_application/data/grid_navigation_data.dart';
 import 'package:movies_application/app/widgets/coming_soon_movies.dart';
 import 'package:movies_application/app/widgets/movies_section.dart';
 import 'package:movies_application/app/widgets/my_circular_progress_indicator.dart';
 import 'package:movies_application/data/movies_repository.dart';
+import 'package:movies_application/data/saved_movies_provider.dart';
 import 'package:movies_application/generated/l10n.dart';
 
 class Home extends StatefulWidget {
@@ -15,8 +18,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final MoviesRepository _moviesRepository = MoviesRepository();
-
   void initState() {
     super.initState();
   }
@@ -24,7 +25,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<MovieModelBloc>(
-      create: (context) => MovieModelBloc(_moviesRepository),
+      create: (context) => MovieModelBloc(getIt.get<MoviesRepository>(),
+          getIt.get<SavedMoviesProvider>(), getIt.get<SavedBlocMediator>()),
       child: BlocBuilder<MovieModelBloc, MovieModelState>(
         builder: (context, state) {
           if (state is MovieModelLoadingState) {
@@ -45,8 +47,8 @@ class _HomeState extends State<Home> {
                       CarouselSlider.builder(
                         itemCount: state.comingSoonMovies.length,
                         options: CarouselOptions(
-                          height: 430,
-                          viewportFraction: 0.7,
+                          height: 450,
+                          viewportFraction: 0.8,
                           enableInfiniteScroll: true,
                           autoPlay: true,
                           autoPlayInterval: Duration(seconds: 55),
@@ -65,59 +67,86 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       MoviesSection(
-                          typeState: state.popularMovies,
-                          name: S.of(context).most_popular_movies,
-                          onTapSeeAll: () {
-                            BlocProvider.of<MovieModelBloc>(context).add(
-                              OnTapSeeAllEvent(
-                                gridNavigationDataEvent: GridNavigationData(
-                                  titleCategory: MoviesCategory.popularMovies,
-                                  name: S.of(context).most_popular_movies,
-                                ),
+                        typeState: state.popularMovies,
+                        name: S.of(context).most_popular_movies,
+                        onTapSeeAll: () {
+                          BlocProvider.of<MovieModelBloc>(context).add(
+                            OnTapSeeAllEvent(
+                              gridNavigationDataEvent: GridNavigationData(
+                                titleCategory: MoviesCategory.popularMovies,
+                                name: S.of(context).most_popular_movies,
                               ),
-                            );
-                          },
-                          onTapMovieDetails: (movieId) {
-                            BlocProvider.of<MovieModelBloc>(context).add(
-                              OnTapMovieDetailsEvent(movieIdEvent: movieId),
-                            );
-                          }),
+                            ),
+                          );
+                        },
+                        onTapMovieDetails: (movieId) {
+                          BlocProvider.of<MovieModelBloc>(context).add(
+                            OnTapMovieDetailsEvent(movieIdEvent: movieId),
+                          );
+                        },
+                        onTapAddSavedIcon: (movieId) => {
+                          BlocProvider.of<MovieModelBloc>(context).add(
+                            OnTapSavedEvent(
+                              movieId: movieId,
+                              moviesCategory: MoviesCategory.popularMovies,
+                            ),
+                          ),
+                        },
+                      ),
                       MoviesSection(
-                          typeState: state.popularTvs,
-                          name: S.of(context).most_popular_tvs,
-                          onTapSeeAll: () {
-                            BlocProvider.of<MovieModelBloc>(context).add(
-                              OnTapSeeAllEvent(
-                                gridNavigationDataEvent: GridNavigationData(
-                                  titleCategory: MoviesCategory.popularTvs,
-                                  name: S.of(context).most_popular_tvs,
-                                ),
+                        typeState: state.popularTvs,
+                        name: S.of(context).most_popular_tvs,
+                        onTapSeeAll: () {
+                          BlocProvider.of<MovieModelBloc>(context).add(
+                            OnTapSeeAllEvent(
+                              gridNavigationDataEvent: GridNavigationData(
+                                titleCategory: MoviesCategory.popularTvs,
+                                name: S.of(context).most_popular_tvs,
                               ),
-                            );
-                          },
-                          onTapMovieDetails: (movieId) {
-                            BlocProvider.of<MovieModelBloc>(context).add(
-                              OnTapMovieDetailsEvent(movieIdEvent: movieId),
-                            );
-                          }),
+                            ),
+                          );
+                        },
+                        onTapMovieDetails: (movieId) {
+                          BlocProvider.of<MovieModelBloc>(context).add(
+                            OnTapMovieDetailsEvent(movieIdEvent: movieId),
+                          );
+                        },
+                        onTapAddSavedIcon: (movieId) => {
+                          BlocProvider.of<MovieModelBloc>(context).add(
+                            OnTapSavedEvent(
+                              movieId: movieId,
+                              moviesCategory: MoviesCategory.popularTvs,
+                            ),
+                          ),
+                        },
+                      ),
                       MoviesSection(
-                          typeState: state.top250Movies,
-                          name: S.of(context).top_movies250,
-                          onTapSeeAll: () {
-                            BlocProvider.of<MovieModelBloc>(context).add(
-                              OnTapSeeAllEvent(
-                                gridNavigationDataEvent: GridNavigationData(
-                                  titleCategory: MoviesCategory.top250Movies,
-                                  name: S.of(context).top_movies250,
-                                ),
+                        typeState: state.top250Movies,
+                        name: S.of(context).top_movies250,
+                        onTapSeeAll: () {
+                          BlocProvider.of<MovieModelBloc>(context).add(
+                            OnTapSeeAllEvent(
+                              gridNavigationDataEvent: GridNavigationData(
+                                titleCategory: MoviesCategory.top250Movies,
+                                name: S.of(context).top_movies250,
                               ),
-                            );
-                          },
-                          onTapMovieDetails: (movieId) {
-                            BlocProvider.of<MovieModelBloc>(context).add(
-                              OnTapMovieDetailsEvent(movieIdEvent: movieId),
-                            );
-                          }),
+                            ),
+                          );
+                        },
+                        onTapMovieDetails: (movieId) {
+                          BlocProvider.of<MovieModelBloc>(context).add(
+                            OnTapMovieDetailsEvent(movieIdEvent: movieId),
+                          );
+                        },
+                        onTapAddSavedIcon: (movieId) => {
+                          BlocProvider.of<MovieModelBloc>(context).add(
+                            OnTapSavedEvent(
+                              movieId: movieId,
+                              moviesCategory: MoviesCategory.top250Movies,
+                            ),
+                          ),
+                        },
+                      ),
                     ],
                   ),
                 ),

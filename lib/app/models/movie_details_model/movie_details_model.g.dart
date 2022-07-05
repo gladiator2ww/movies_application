@@ -11,13 +11,13 @@ _$_MovieDetailsModel _$$_MovieDetailsModelFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       title: json['title'] as String,
       image: json['image'] as String,
-      imDbRating: json['imDbRating'] as String,
-      year: json['year'] as String,
+      imDbRating: json['imDbRating'] as String?,
+      year: json['year'] as String?,
       plot: json['plot'] as String,
       directors: json['directors'] as String,
       countries: json['countries'] as String,
-      runtimeStr: json['runtimeStr'] as String,
-      imDbRatingVotes: json['imDbRatingVotes'] as String,
+      runtimeStr: json['runtimeStr'] as String?,
+      imDbRatingVotes: json['imDbRatingVotes'] as String?,
       genreList: (json['genreList'] as List<dynamic>)
           .map((e) => GenreModel.fromJson(e as Map<String, dynamic>))
           .toList(),

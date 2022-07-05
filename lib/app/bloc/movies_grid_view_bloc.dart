@@ -1,11 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_application/app/models/filter_model.dart';
 import 'package:movies_application/app/models/movie_model/movie_model.dart';
+import 'package:movies_application/data/dependency_service.dart';
 import 'package:movies_application/data/grid_navigation_data.dart';
 import 'package:movies_application/app/models/sorting.dart';
 import 'package:movies_application/app/services/dialog_service.dart';
 import 'package:movies_application/data/filter_manager.dart';
 import 'package:movies_application/data/movies_repository.dart';
+import 'package:movies_application/data/navigation_service.dart';
+
 
 class MovieGridViewBloc extends Bloc<MovieGridViewEvent, MovieGridViewState> {
   final MoviesRepository _moviesRepository;
@@ -53,11 +56,13 @@ class MovieGridViewBloc extends Bloc<MovieGridViewEvent, MovieGridViewState> {
           _filterModel.sortingItems.isNotEmpty) {
         _movies = FilterManager.getFilteredMovies(
             filterModel: _filterModel, movies: _movies);
-      }
-
+      } 
       yield MovieGridViewLoadedState(
         moviesList: _movies,
       );
+    }else if (event is OnTapMovieDetailsEvent) {
+      navigationService.navigateTo(
+          page: Page.movieDetails, arguments: event.movieIdEvent);
     }
   }
 }
@@ -69,6 +74,13 @@ class MovieGridViewInitializeEvent extends MovieGridViewEvent {
 
   MovieGridViewInitializeEvent({
     required this.gridNavigationDataEvent,
+  });
+}
+class OnTapMovieDetailsEvent extends MovieGridViewEvent {
+  final String movieIdEvent;
+
+  OnTapMovieDetailsEvent({
+    required this.movieIdEvent,
   });
 }
 

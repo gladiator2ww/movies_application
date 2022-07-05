@@ -8,6 +8,8 @@ import 'package:movies_application/app/models/search_model/search_model.dart';
 import 'package:movies_application/app/models/short_image/short_image.dart';
 import 'package:movies_application/app/models/actor_details_model/actor_details_model.dart';
 import 'package:movies_application/shared/apikey.dart';
+import '../app/models/saved_item_model/saved_item_model.dart';
+import '../app/models/trailer_model/movie_trailer_model.dart';
 
 class MoviesProvider {
   Future<List<MovieModel>> fetchPopularMovies() async {
@@ -19,58 +21,79 @@ class MoviesProvider {
   }
 
   Future<List<MovieModel>> fetchPopularTvs() async {
-    List<MovieModel> itemTvs = [];
-
-    final data = await http.get(
-        Uri.parse('https://imdb-api.com/en/API/MostPopularTVs/k_ftqseghl'));
-    itemTvs = TvsItems.fromJson(jsonDecode(data.body)).itemsTvs;
-    return itemTvs;
+    final data = await http
+        .get(Uri.parse('https://imdb-api.com/en/API/MostPopularTVs/${apiKey}'));
+    if (data.statusCode == 200) {
+      final itemTvs = TvsItems.fromJson(jsonDecode(data.body)).itemsTvs;
+      return itemTvs;
+    } else
+      return [];
   }
 
   Future<List<MovieModel>> fetchTop250Movies() async {
     final data = await http
         .get(Uri.parse('https://imdb-api.com/en/API/Top250Movies/${apiKey}'));
-    final itemTop250 = Top250Items.fromJson(jsonDecode(data.body)).itemsTop250;
-    return itemTop250;
+    if (data.statusCode == 200) {
+      final itemTop250 =
+          Top250Items.fromJson(jsonDecode(data.body)).itemsTop250;
+      return itemTop250;
+    } else
+      return [];
   }
 
   Future<List<MovieModelComingSoon>> fetchComingSoonMovies() async {
     final data = await http
         .get(Uri.parse('https://imdb-api.com/en/API/ComingSoon/${apiKey}'));
-    final itemComingSoon =
-        ComingSoonItems.fromJson(jsonDecode(data.body)).itemsComingSoon;
-    return itemComingSoon;
+
+    if (data.statusCode == 200) {
+      final itemComingSoon =
+          ComingSoonItems.fromJson(jsonDecode(data.body)).itemsComingSoon;
+      return itemComingSoon;
+    } else
+      return [];
   }
 
   Future<List<ShortImageModel>> fetchShortImage(String movieId) async {
     final data = await http.get(Uri.parse(
         'https://imdb-api.com/en/API/Images/${apiKey}/${movieId}/Short'));
-
-    final itemShortImage =
-        ShortImageItems.fromJson(jsonDecode(data.body)).shortImageItems;
-    return itemShortImage;
+    if (data.statusCode == 200) {
+      final itemShortImage =
+          ShortImageItems.fromJson(jsonDecode(data.body)).shortImageItems;
+      return itemShortImage;
+    } else
+      return [];
   }
 
   Future<MovieDetailsModel> fetchMovieDetails(String movieId) async {
     final data = await http.get(
         Uri.parse('https://imdb-api.com/en/API/Title/${apiKey}/${movieId}'));
-    final itemMovieDetails = MovieDetailsModel.fromJson(jsonDecode(data.body));
-    return itemMovieDetails;
+    if (data.statusCode == 200) {
+      final itemMovieDetails =
+          MovieDetailsModel.fromJson(jsonDecode(data.body));
+      return itemMovieDetails;
+    } else
+      return throw ('');
   }
 
   Future<ActorDetailsModel> fetchActorDetails(String actorId) async {
     final data = await http.get(
         Uri.parse('https://imdb-api.com/en/API/Name/${apiKey}/${actorId}'));
-    final itemActor = ActorDetailsModel.fromJson(jsonDecode(data.body));
-    return itemActor;
+    if (data.statusCode == 200) {
+      final itemActor = ActorDetailsModel.fromJson(jsonDecode(data.body));
+      return itemActor;
+    } else
+      return throw ('');
   }
 
   Future<List<BoxOffice>> fetchBoxOffice() async {
     final data = await http
         .get(Uri.parse('https://imdb-api.com/en/API/BoxOffice/${apiKey}'));
-    final itemBoxOffice =
-        BoxOfficeItems.fromJson(jsonDecode(data.body)).boxOfficeItems;
-    return itemBoxOffice;
+    if (data.statusCode == 200) {
+      final itemBoxOffice =
+          BoxOfficeItems.fromJson(jsonDecode(data.body)).boxOfficeItems;
+      return itemBoxOffice;
+    } else
+      return [];
   }
 
   Future<List<SearchModel>> fetchSearch(String titleId) async {
@@ -82,6 +105,27 @@ class MoviesProvider {
       return itemSearchModel;
     }
     return [];
+  }
+
+  Future<MovieTrailerModel> fetchTrailer(String movieId) async {
+    final data = await http.get(Uri.parse(
+        'https://imdb-api.com/en/API/YouTubeTrailer/${apiKey}/${movieId}'));
+    if (data.statusCode == 200) {
+      final itemTrailer = MovieTrailerModel.fromJson(jsonDecode(data.body));
+      return itemTrailer;
+    } else
+      return throw ('');
+  }
+
+  Future<SavedItemModel> fetchSavedItems(String savedId) async {
+    final data = await http.get(
+        Uri.parse('https://imdb-api.com/en/API/Title/${apiKey}/${savedId}'));
+    if (data.statusCode == 200) {
+      final itemSaved = SavedItemModel.fromJson(jsonDecode(data.body));
+      ;
+      return itemSaved;
+    } else
+      return throw ('');
   }
 }
 

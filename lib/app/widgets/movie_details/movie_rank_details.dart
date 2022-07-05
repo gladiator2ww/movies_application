@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 
 import 'package:movies_application/app/theme/branding_colors.dart';
+import 'package:movies_application/app/widgets/buttons/add_to_saved_button.dart';
 import 'package:movies_application/generated/l10n.dart';
+
+import '../../models/movie_details_model/movie_details_model.dart';
 
 class MovieRankDetails extends StatelessWidget {
   final String rating;
   final String voteRating;
   final void Function() onTapAddSaved;
+  final bool isFavorite;
 
   MovieRankDetails({
     Key? key,
     required this.rating,
     required this.voteRating,
     required this.onTapAddSaved,
+    required this.isFavorite,
   }) : super(key: key);
 
   @override
@@ -37,24 +42,16 @@ class MovieRankDetails extends StatelessWidget {
               ),
               Text(
                 voteRating,
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                      color: BrandingColors.iconStar,
+                    ),
               ),
             ],
           ),
           SizedBox(width: 80),
-          ElevatedButton(
-            onPressed: onTapAddSaved,
-            child: Container(
-              child: Row(
-                children: [
-                  Icon(Icons.add, color: BrandingColors.primaryText),
-                  Text(
-                    S.of(context).add_to_saved,
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
-                ],
-              ),
-            ),
+          AddToSavedButton(
+            onTap: onTapAddSaved,
+            isFavorite: isFavorite,
           ),
         ],
       ),

@@ -18,8 +18,12 @@ class MovieImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: imageUrl,
-      placeholder: (context, url) => Center(
-        child: MyCircularProgressIndicator(),
+      placeholder: (context, url) => SizedBox(
+        width: width,
+        height: height,
+        child: Center(
+          child: MyCircularProgressIndicator(),
+        ),
       ),
       errorWidget: (context, url, error) => const Icon(Icons.error),
       fadeInCurve: Curves.easeIn,

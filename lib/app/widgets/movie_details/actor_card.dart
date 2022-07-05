@@ -16,19 +16,20 @@ class ActorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.only(right: 10),
-      elevation: 3,
+      margin: EdgeInsets.only(right: 10, bottom: 10),
+      elevation: 5,
       shape: BeveledRectangleBorder(
-        borderRadius: BorderRadius.circular(5.0),
+        borderRadius: BorderRadius.circular(3.0),
       ),
       child: SizedBox(
         height: 260,
         width: 140,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             MovieImage(width: 140, height: 210, imageUrl: itemImage),
+            SizedBox(height: 5),
             Text(
               itemName,
               style: Theme.of(context).textTheme.bodyText1,
@@ -36,6 +37,7 @@ class ActorCard extends StatelessWidget {
               maxLines: 2,
               textAlign: TextAlign.center,
             ),
+            SizedBox(height: 5),
             Text(
               asCharacter,
               style: Theme.of(context).textTheme.bodyText2,

@@ -8,7 +8,7 @@
     "home" : "Home",
     "search" : "Search",
     "saved" : "Saved",
-    "you" : "You",
+    "you" : "Settings",
     "cancel" : "CANCEL",
     "filters" : "Filters",
     "done" : "DONE",
@@ -42,8 +42,9 @@
     "awards": "awards:",
     "height": "height:",
     "director": "director:",
-    "countries":  "countries:",
-    "rate_of_10": "/10"
+    "countries":  "country:",
+    "rate_of_10": "/10",
+    "watch_trailer": "Watch Trailer"
     
         
     }

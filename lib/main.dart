@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:movies_application/app/bloc/saved_bloc_mediator.dart';
 import 'package:movies_application/app/theme/theme_provider.dart';
+import 'package:movies_application/data/movies_repository.dart';
+import 'package:movies_application/data/saved_movies_provider.dart';
 import 'app/pages/shell.dart';
 import 'data/dependency_service.dart';
 import 'data/navigation_service.dart';
@@ -11,6 +15,13 @@ void main() {
   // DependencyService.registerServices();
   getIt.registerSingleton<NavigationService>(NavigationService(),
       signalsReady: true);
+  getIt.registerSingleton<SavedMoviesProvider>(SavedMoviesProvider(),
+      signalsReady: true);
+  getIt.registerSingleton<SavedBlocMediator>(SavedBlocMediator(),
+      signalsReady: true);
+  getIt.registerSingleton<MoviesRepository>(MoviesRepository());
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(MyFirstApp());
 }
 

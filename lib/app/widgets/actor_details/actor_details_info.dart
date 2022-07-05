@@ -57,7 +57,7 @@ class ActorDetailsInfo extends StatelessWidget {
                   '${S.of(context).awards} $awards',
                   style: Theme.of(context).textTheme.subtitle1,
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
+                  maxLines: 3,
                 ),
                 SizedBox(height: 10),
                 Text(

@@ -53,6 +53,11 @@ class _TextStyles {
     fontSize: FontSizes.big_3x,
     fontWeight: FontWeight.w700,
   );
+  static const headline2 = TextStyle(
+    color: BrandingColors.primaryText,
+    fontSize: FontSizes.big_2x,
+    fontWeight: FontWeight.w500,
+  );
   static const bodyText1 = TextStyle(
     color: BrandingColors.primaryText,
     fontSize: FontSizes.normal,
@@ -71,11 +76,6 @@ class _TextStyles {
   );
 
 //
-  static const headline2 = TextStyle(
-    color: BrandingColors.primary,
-    fontSize: FontSizes.big_3x,
-    fontWeight: FontWeight.w700,
-  );
 
   static const headline1 = TextStyle(
     color: BrandingColors.primaryText,

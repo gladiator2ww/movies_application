@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:movies_application/app/widgets/movie_details/movie_screen_image.dart';
-import 'package:movies_application/generated/l10n.dart';
+import '../movie_details/movie_screen_image.dart';
 
-class BoxOfficeItem extends StatelessWidget {
+class SearchResultItem extends StatelessWidget {
   final String title;
   final String image;
-  final String weekend;
-  final String gross;
-  final String weeks;
+  final String description;
 
-  BoxOfficeItem({
+  SearchResultItem({
     Key? key,
     required this.title,
     required this.image,
-    required this.weekend,
-    required this.gross,
-    required this.weeks,
+    required this.description,
   }) : super(key: key);
 
   @override
@@ -29,9 +24,9 @@ class BoxOfficeItem extends StatelessWidget {
             height: 140,
             imageUrl: image,
           ),
-          SizedBox(width: 5),
+          SizedBox(width: 15),
           Container(
-            alignment: Alignment.centerLeft,
+            width: 200,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,17 +34,11 @@ class BoxOfficeItem extends StatelessWidget {
                 Text(
                   title,
                   style: Theme.of(context).textTheme.headline6,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
                 ),
                 Text(
-                  '${S.of(context).weekend} $weekend',
-                  style: Theme.of(context).textTheme.headline3,
-                ),
-                Text(
-                  '${S.of(context).gross} $gross',
-                  style: Theme.of(context).textTheme.headline3,
-                ),
-                Text(
-                  '${S.of(context).weeks} $weeks',
+                  description,
                   style: Theme.of(context).textTheme.headline3,
                 ),
               ],

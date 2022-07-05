@@ -11,8 +11,8 @@ _$_MovieModel _$$_MovieModelFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       title: json['title'] as String,
       image: json['image'] as String,
-      imDbRating: json['imDbRating'] as String,
-      year: json['year'] as String,
+      imDbRating: json['imDbRating'] as String?,
+      year: json['year'] as String?,
     );
 
 Map<String, dynamic> _$$_MovieModelToJson(_$_MovieModel instance) =>

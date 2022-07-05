@@ -21,6 +21,7 @@ class ActorDetails extends StatefulWidget {
 
 class _ActorDetailsState extends State<ActorDetails> {
   final MoviesRepository _moviesRepository = MoviesRepository();
+
   void initState() {
     super.initState();
   }
@@ -29,9 +30,7 @@ class _ActorDetailsState extends State<ActorDetails> {
   Widget build(BuildContext context) {
     return BlocProvider<ActorDetailsBloc>(
       create: (context) => ActorDetailsBloc(_moviesRepository)
-        ..add(
-          ActorDetailsInitializeEvent(actorId: widget.actorId),
-        ),
+        ..add(ActorDetailsInitializeEvent(actorId: widget.actorId)),
       child: BlocBuilder<ActorDetailsBloc, ActorDetailsState>(
         builder: (context, state) {
           if (state is ActorDetailsLoadingState) {
@@ -66,7 +65,7 @@ class _ActorDetailsState extends State<ActorDetails> {
                           SizedBox(height: 10),
                           Text(
                             state.actor.role,
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: Theme.of(context).textTheme.subtitle1,
                           ),
                         ],
                       ),
@@ -79,7 +78,7 @@ class _ActorDetailsState extends State<ActorDetails> {
                       awards: state.actor.awards,
                     ),
                     ActorFilmographySection(
-                      typeState: state.actor.actorMovies,
+                      typeState: state.actor.knownFor,
                       onTapMovieDetailsEvent: (movieId) {
                         BlocProvider.of<ActorDetailsBloc>(context).add(
                           OnTapMovieDetailsEvent(movieIdEvent: movieId),
